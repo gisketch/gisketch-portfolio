@@ -90,6 +90,16 @@ body {
     --chart-4: 35 47% 62%;
     --chart-5: 24 98% 62%;
   }
+
+  .no-visible-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .no-visible-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer base {

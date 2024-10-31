@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { MoonIcon, SunIcon, Palette } from "lucide-react";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -23,12 +23,10 @@ export function ModeToggle({ className }: { className?: string }) {
   console.log({ theme });
 
   const cycleTheme = () => {
-    if (theme === "kanagawa") {
+    if (theme === "dark") {
       setTheme("light");
-    } else if (theme === "light") {
-      setTheme("dark");
     } else {
-      setTheme("kanagawa");
+      setTheme("dark");
     }
   };
 
@@ -41,10 +39,8 @@ export function ModeToggle({ className }: { className?: string }) {
     >
       {theme === "light" ? (
         <SunIcon className="size-4" />
-      ) : theme === "dark" ? (
-        <MoonIcon className="size-4" />
       ) : (
-        <Palette className="size-4" />
+        <MoonIcon className="size-4" />
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>
