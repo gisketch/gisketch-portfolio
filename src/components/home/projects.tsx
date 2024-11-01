@@ -38,13 +38,8 @@ const cards = (type: string) =>
 
 export default function Projects() {
   return (
-    <Section className="flex items-center">
-      <BlurInOnView>
-        <h1 className="text-h1 md:text-h1-desktop w-full text-center">
-          Selected Projects
-        </h1>
-      </BlurInOnView>
-      <div className="flex flex-col gap-8">
+    <Section className="flex items-center" title="Selected Projects">
+      <div className="flex flex-col gap-8 w-full">
         <Tabs
           containerClassName="justify-center "
           tabs={[

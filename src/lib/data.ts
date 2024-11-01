@@ -14,7 +14,12 @@ import {
   FigmaOriginal,
   PhotoshopOriginal,
   NeovimOriginal,
+  VscodeOriginal,
+  GithubOriginal,
+  LinkedinOriginal,
+  TwitterOriginal,
 } from "devicons-react";
+import { Github, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 
 export const technologies = {
   languages: {
@@ -94,6 +99,12 @@ export const technologies = {
       shortname: "Neovim",
       yearStarted: 2023,
     },
+    // vscode: {
+    //   name: "Visual Studio Code",
+    //   icon: VscodeOriginal,
+    //   shortname: "VS Code",
+    //   yearStarted: 2023,
+    // },
     unity: {
       name: "Unity",
       icon: UnityOriginal,
@@ -298,28 +309,33 @@ export const achievements = [
 export const socialMedia = [
   {
     platform: "GitHub",
+    icon: Github,
     username: "gisketch",
     url: "https://github.com/gisketch",
   },
   {
     platform: "LinkedIn",
+    icon: Linkedin,
     username: "glennjimenez",
     url: "https://www.linkedin.com/in/glennjimenez/",
   },
   {
     platform: "Twitter",
+    icon: Twitter,
     username: "gisketch",
     url: "https://twitter.com/gisketch",
   },
   {
-    platform: "YouTube",
-    username: "gisketch",
-    url: "https://www.youtube.com/gisketch",
-  },
-  {
     platform: "Instagram",
+    icon: Instagram,
     username: "gisketch",
     url: "https://www.instagram.com/gisketch",
+  },
+  {
+    platform: "YouTube",
+    icon: Youtube,
+    username: "gisketch",
+    url: "https://www.youtube.com/gisketch",
   },
 ];
 
@@ -396,13 +412,16 @@ export const getRecentActivity = async () => {
   };
 };
 
-export const getRandomFunFact = () => {
-  const funFacts = [
+export const getRandomFunFact = (funFact) => {
+  let funFacts = [
     "I can play the Zelda theme on both guitar and keyboard!",
     "My first game was made in MS Paint and PowerPoint when I was 10.",
     "I once stayed up for 48 hours straight to finish a game jam project.",
     "I've contributed to open-source projects in 5 different programming languages.",
     "My GitHub contribution graph once spelled out 'HELLO' over a month of commits.",
   ];
+
+  funFacts = funFacts.filter((fact) => fact !== funFact);
+
   return funFacts[Math.floor(Math.random() * funFacts.length)];
 };

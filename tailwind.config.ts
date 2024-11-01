@@ -26,6 +26,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // fontFamily: {
+      //   sans: ["var(--font-public-sans)"],
+      // },
       fontSize: {
         // Mobile first approach
         hero: [

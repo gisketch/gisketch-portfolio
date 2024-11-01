@@ -8,7 +8,7 @@ body {
 
 @layer base {
   :root {
-    --font-inter: "Inter", sans-serif;
+    /* --font-inter: "Inter", sans-serif; */
     /* Light theme defaults */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -38,8 +38,10 @@ body {
   }
 
   :root[class~="dark"] {
-    --background: 0 0% 0%;
+    --background: 0 0% 1.5%;
+    /* --background: #09090d; */
     --foreground: 0 0% 98%;
+    /* --surface: #131318; */
     --card: 0 0% 0%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 0%;

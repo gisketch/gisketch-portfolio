@@ -10,6 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
+import { FollowerPointerCard } from "../ui/following-pointer";
 
 interface Card {
   title: string;
@@ -106,7 +107,7 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
                     <div className="flex flex-col gap-2">
                       <motion.h3
                         layoutId={`title-${active.title}-${id}`}
-                        className="font-medium text-neutral-700 dark:text-neutral-200 text-base"
+                        className="font-medium text-neutral-700 dark:text-neutral-200 text-body md:text-body-desktop"
                       >
                         {active.title}
                       </motion.h3>
@@ -167,49 +168,55 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
         </AnimatePresence>
         <ul className="max-w-2xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-start gap-4">
           {cards.map((card, index) => (
-            <motion.div
-              layoutId={`card-${card.title}-${id}`}
+            <FollowerPointerCard
+              title="Click for more details"
+              className="cursor-pointer"
+              hideCursor
               key={`${card.title}-${index}`}
-              onClick={() => setActive(card)}
-              className="p-4 flex flex-col  hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl cursor-pointer border-border border"
             >
-              <div className="flex gap-4 flex-col  w-full">
-                <motion.div layoutId={`image-${card.title}-${id}`}>
-                  <Image
-                    width={300}
-                    height={300}
-                    src={card.src}
-                    alt={card.title}
-                    className="h-60 w-full  rounded-lg object-cover object-top"
-                  />
-                </motion.div>
-                <div className="flex justify-center items-start flex-col gap-2">
-                  <motion.h3
-                    layoutId={`title-${card.title}-${id}`}
-                    className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left text-base"
-                  >
-                    {card.title}
-                  </motion.h3>
-                  <motion.div
-                    layoutId={`technologies-${card.technologies
-                      .map((tech) => tech.name)
-                      .join("-")}-${id}`}
-                    className="text-neutral-600 dark:text-neutral-400 text-center md:text-left flex gap-2 flex-wrap justify-center md:justify-start"
-                  >
-                    {card.technologies.map((tech, index) =>
-                      tech.icon ? (
-                        <Tooltip key={index}>
-                          <TooltipTrigger asChild>
-                            <tech.icon className="w-6 h-6" />
-                          </TooltipTrigger>
-                          <TooltipContent>{tech.name}</TooltipContent>
-                        </Tooltip>
-                      ) : null
-                    )}
+              <motion.div
+                layoutId={`card-${card.title}-${id}`}
+                onClick={() => setActive(card)}
+                className="p-4 flex flex-col  hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xl border-border border"
+              >
+                <div className="flex gap-4 flex-col  w-full">
+                  <motion.div layoutId={`image-${card.title}-${id}`}>
+                    <Image
+                      width={300}
+                      height={300}
+                      src={card.src}
+                      alt={card.title}
+                      className="h-60 w-full  rounded-lg object-cover object-top"
+                    />
                   </motion.div>
+                  <div className="flex justify-center items-start flex-col gap-2">
+                    <motion.h3
+                      layoutId={`title-${card.title}-${id}`}
+                      className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left text-body md:text-body-desktop"
+                    >
+                      {card.title}
+                    </motion.h3>
+                    <motion.div
+                      layoutId={`technologies-${card.technologies
+                        .map((tech) => tech.name)
+                        .join("-")}-${id}`}
+                      className="text-neutral-600 dark:text-neutral-400 text-center md:text-left flex gap-2 flex-wrap justify-center md:justify-start"
+                    >
+                      {card.technologies.map((tech, index) =>
+                        tech.icon ? (
+                          <Tooltip key={index}>
+                            <TooltipTrigger asChild>
+                              <tech.icon className="w-6 h-6" />
+                            </TooltipTrigger>
+                            <TooltipContent>{tech.name}</TooltipContent>
+                          </Tooltip>
+                        ) : null
+                      )}
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </FollowerPointerCard>
           ))}
         </ul>
       </TooltipProvider>
