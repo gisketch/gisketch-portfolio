@@ -1,6 +1,5 @@
 "use client";
 
-import BlurInOnView from "@/components/ui/blur-in-on-view";
 import Section from "../section";
 import { Tabs } from "../ui/tabs";
 import ExpandableCardGrid from "@/components/blocks/expandable-card-grid";
@@ -56,7 +55,9 @@ export default function Projects() {
           ]}
         />
       </div>
-      <Button variant="outline">See All <Folder/></Button>
+      <Button variant="outline">
+        See All <Folder />
+      </Button>
     </Section>
   );
 }

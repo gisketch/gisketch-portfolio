@@ -72,3 +72,80 @@ export const useBreakpoint = () => {
 };
 
 export { breakpoints };
+
+export function formatDate(data) {
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  function calculateDuration(startMonth, startYear, endMonth, endYear) {
+    // const start = new Date(startYear, startMonth - 1);
+    // const end = new Date(endYear, endMonth - 1);
+
+    let months = (endYear - startYear) * 12 + (endMonth - startMonth);
+    const years = Math.floor(months / 12);
+    months = months % 12;
+
+    const duration = [];
+    if (years > 0) {
+      duration.push(`${years} ${years === 1 ? "year" : "years"}`);
+    }
+    if (months > 0) {
+      duration.push(`${months} ${months === 1 ? "month" : "months"}`);
+    }
+
+    return duration.join(" ");
+  }
+
+  // const startDate = `${months[data.month - 1]}-${data.year}`;
+
+  // Case 1: Only month and year
+  if (!data.isPresent && !data.endedMonth && !data.endedYear) {
+    return {
+      date: `${months[data.month - 1]} ${data.year}`,
+      duration: "",
+    };
+  }
+
+  // Case 2: Present
+  if (data.isPresent) {
+    const now = new Date();
+    const duration = calculateDuration(
+      data.month,
+      data.year,
+      now.getMonth() + 1,
+      now.getFullYear()
+    );
+    return {
+      date: `${months[data.month - 1]} ${data.year} - Present`,
+      duration: duration ? `(${duration})` : "",
+    };
+  }
+
+  // Case 3: Has end date
+  if (data.endedMonth && data.endedYear) {
+    const duration = calculateDuration(
+      data.month,
+      data.year,
+      data.endedMonth,
+      data.endedYear
+    );
+    return {
+      date: `${months[data.month - 1]} ${data.year} - ${
+        months[data.endedMonth - 1]
+      } ${data.endedYear}`,
+      duration: duration ? `(${duration})` : "",
+    };
+  }
+}

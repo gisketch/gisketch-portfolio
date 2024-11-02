@@ -1,19 +1,9 @@
 // components/layout/Navbar.tsx
 "use client";
 
-import { useCommandPalette } from "@/components/command-palette";
 import { COMMAND_MENU_ITEMS } from "@/lib/command-menu-config";
 import Link from "next/link";
-import {
-  HomeIcon,
-  FolderIcon,
-  UserIcon,
-  TerminalIcon,
-  CommandIcon,
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
-} from "lucide-react";
+import { CommandIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";

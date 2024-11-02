@@ -38,11 +38,11 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
       }
     }
 
-    if (active && typeof active === "object") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    // if (active && typeof active === "object") {
+    //   document.body.style.overflow = "hidden";
+    // } else {
+    //   document.body.style.overflow = "auto";
+    // }
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -166,11 +166,10 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
             </div>
           ) : null}
         </AnimatePresence>
-        <ul className="max-w-2xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-start gap-4">
+        <ul className="mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-start gap-4">
           {cards.map((card, index) => (
             <FollowerPointerCard
               title="Click for more details"
-              className="cursor-pointer"
               hideCursor
               key={`${card.title}-${index}`}
             >

@@ -14,12 +14,16 @@ import {
   FigmaOriginal,
   PhotoshopOriginal,
   NeovimOriginal,
-  VscodeOriginal,
-  GithubOriginal,
-  LinkedinOriginal,
-  TwitterOriginal,
 } from "devicons-react";
-import { Github, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import {
+  Code,
+  Github,
+  Instagram,
+  KeyboardIcon,
+  Linkedin,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 
 export const technologies = {
   languages: {
@@ -211,6 +215,21 @@ export const projects = [
   },
 ];
 
+function getLearningsText() {
+  const learning = ["NextJS", "TODO"];
+
+  if (learning.length === 0) return "";
+  if (learning.length === 1) return learning[0];
+  if (learning.length === 2) return `${learning[0]} and ${learning[1]}`;
+
+  return learning.reduce((text, item, index) => {
+    if (index === learning.length - 1) {
+      return `${text}, and ${item}`;
+    }
+    return index === 0 ? item : `${text}, ${item}`;
+  }, "");
+}
+
 export const about = () => {
   const currentYear = new Date().getFullYear();
   const calculateExperience = (yearStarted: number) =>
@@ -220,18 +239,23 @@ export const about = () => {
     name: "gisketch",
     realName: "Glenn Jimenez",
     nickname: "Ghegi",
-    title: "Fullstack Developer & Game Artist",
+    hobbies: ["Artist", "Guitarist", "Gamer", "Zelda Fan"],
+    descriptions: [
+      `Been coding for **${calculateExperience(
+        2019
+      )}+** years, with **${calculateExperience(
+        2023
+      )}+** years professionally. I love creating stunning websites that leave an impression, making life easier through automation, building cool tools, and crafting fun games.`,
+      `Always learning something new; currently exploring ${getLearningsText()}. Code might be my thing, but art and music keep me creative!`,
+    ],
+    titles: ["Web developer.", "Game developer."],
+    work: ["Software Engineer at Lexagle", "Developer at AoTTG 2"],
     location: "Philippines",
     email: "dev@gisketch.com",
     copyrightYear: currentYear,
     yearsOfExperience: calculateExperience(2019),
     preferredLanguage: technologies.languages.typescript,
     preferredIDE: technologies.tools.neovim,
-    github: "https://github.com/gisketch",
-    linkedin: "https://www.linkedin.com/in/glennjimenez/",
-    twitter: "https://twitter.com/gisketch",
-    youtube: "https://www.youtube.com/gisketch",
-    instagram: "https://www.instagram.com/gisketch",
     interests: ["Game Development", "Web Development", "Digital Art", "Music"],
     education: {
       degree: "Electronics Engineering",
@@ -288,23 +312,163 @@ export const skills = [
   { name: "Open Source Contribution", level: 75 },
 ];
 
-export const achievements = [
+const achievements = [
   {
-    title: "Best Research Paper",
-    description: "Won for Zelda: GPT-3 Math Parser project",
+    title: "Zelda: GPT-3 Math Parser project",
+    subtitle: "Best Research Paper",
+    location: "University of Southern Mindanao",
+    img: "/resume/zelda.webp",
+    stack: ["R&D", "React", "Node.js", "JavaScript"],
+    descriptions: [
+      "Developed a software that can parse natural language into math expression",
+      "Integrated OpenAI's GPT-3 model",
+    ],
+    month: 5,
+    year: 2023,
+  },
+  {
+    title: "COVID: Armageddon",
+    subtitle: "Game Development Champion",
+    location: "MCM Youth Summit",
+    stack: ["C#", "Photoshop"],
+    img: "/resume/covid.webp",
+    descriptions: [
+      `Single-handedly built "COVID: Armageddon," a 2D platformer game in Unity 3D, within a tight deadline of 3 weeks`,
+      "Conceptualized and crafted a post-apocalyptic world with captivating visuals and intense gameplay",
+      "Served as the coder and artist, managing tight deadlines and juggling academic commitments during exam week",
+    ],
+    month: 10,
+    year: 2021,
+    endedMonth: 11,
+    endedYear: 2021,
+  },
+  {
+    title: "Datathon Champion",
+    stack: ["Python"],
+    icon: Code,
+    subtitle: "JIECEP National Summit",
+    descriptions: [
+      "Led a team of three classmates to victory, securing first place in the prestigious national competition",
+      "Achieved the highest score by answering correctly and swiftly on 6 out of 6 competition problems",
+    ],
+    month: 11,
     year: 2022,
   },
   {
-    title: "Champion",
-    description: "2021 MCM Youth E-nnovation Summit for COVID: Armageddon",
-    year: 2021,
-  },
-  {
-    title: "Lead 2D Artist",
-    description: "AoTTG 2 Open Source Project",
-    year: 2020,
+    title: "Speedtyping Champion",
+    subtitle: "JIECEP Regional Summit",
+    icon: KeyboardIcon,
+    stack: ["180 WPM (peak)"],
+    descriptions: [
+      "Maintained an average typing speed of 130 words per minute (wpm)",
+    ],
+    month: 10,
+    year: 2022,
   },
 ];
+
+const experiences = [
+  {
+    title: "Lexagle",
+    subtitle: "Junior Software Engineer",
+    location: "Remote・Singapore",
+    img: "/resume/lex.webp",
+    stack: [
+      "TypeScript",
+      "React",
+      "MaterialUI",
+      "TailwindCss",
+      "Kotlin",
+      "Springboot",
+      "REST",
+      "Postgresql",
+    ],
+    descriptions: [
+      "Contributed to the migration of the component library from Material-UI to TailwindCSS, improving maintainability and performance",
+      "Developed and maintained RESTful APIs using Kotlin and Spring Boot, implementing database migrations with Flyway",
+      "Collaborated with the team on full-stack development tasks, working with React for frontend and PostgreSQL for database management",
+      "Participated in code reviews and implemented best practices for both frontend and backend development",
+    ],
+    month: 8,
+    year: 2023,
+    isPresent: true,
+  },
+  {
+    title: "AoTTG 2",
+    img: "/resume/aottg2.webp",
+    subtitle: "Game Dev・Lead Web Dev・Artist",
+    location: "Open-source",
+    stack: ["C#", "TypeScript", "ExpressJs", "Postgresql"],
+    descriptions: [
+      "Led the development of the official website and backend infrastructure using TypeScript, Express.js, and PostgreSQL",
+      "Designed and implemented a new UI system for the game, creating high-fidelity mockups in Photoshop and implementing them in Unity C#",
+      "Spearheaded the development of RESTful APIs for user authentication and game services",
+      "Collaborated with the development team to implement new game features and mechanics",
+    ],
+    month: 6,
+    year: 2020,
+    isPresent: true,
+  },
+];
+
+const education = [
+  {
+    title: "Electronics Engineering",
+    subtitle: "University of Southern Mindanao",
+    location: "Philippines",
+    img: "/resume/usm.webp",
+    stack: [
+      "Embedded Systems",
+      "Python",
+      "C++",
+      "JavaScript",
+      "Circuit Design",
+      "Project Management",
+      "Technical Writing",
+      "Public Speaking",
+      "Team Leadership",
+    ],
+    descriptions: [
+      "Developed 10+ automation projects using various microcontrollers and embedded systems",
+      "Led multiple thesis projects combining hardware and software solutions",
+      "Gained hands-on experience in circuit design, PCB fabrication, and system integration",
+      "Collaborated with cross-functional teams on various engineering projects",
+      "Presented technical proposals and research findings to faculty and industry panels",
+    ],
+    month: 6,
+    year: 2019,
+    endedMonth: 6,
+    endedYear: 2023,
+  },
+  {
+    title: "CS50x",
+    subtitle: "Introduction to Computer Science",
+    location: "Harvard Online",
+    img: "/resume/cs50.webp",
+    stack: [
+      "C",
+      "Python",
+      "SQL",
+      "HTML/CSS",
+      "JavaScript",
+      "Flask",
+      "Algorithms",
+      "Data Structures",
+      "Web Development",
+    ],
+    descriptions: [
+      "Mastered fundamental programming concepts through hands-on problem sets",
+      "Developed understanding of algorithms, data structures, and computational thinking",
+      "Built web applications using Python Flask framework",
+      "Completed projects covering various domains: from low-level programming to web development",
+      "Learned database design and management using SQL",
+    ],
+    month: 6,
+    year: 2023,
+  },
+];
+
+export const resumeData = { achievements, experiences, education };
 
 export const socialMedia = [
   {

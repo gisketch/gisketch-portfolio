@@ -3,7 +3,6 @@ import {
   FolderIcon,
   UserIcon,
   TerminalIcon,
-  Settings2Icon,
   GithubIcon,
   LinkedinIcon,
   TwitterIcon,

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import createGlobe from "cobe";
-import { useSpring, useMotionValue, useTransform } from "framer-motion";
+import { useSpring, useMotionValue } from "framer-motion";
 import { useTheme } from "next-themes";
 
 interface GlobeProps {
@@ -24,8 +24,7 @@ export default function Globe({ width = 500, height = 500 }: GlobeProps) {
   });
 
   useEffect(() => {
-    // Initial phi to show marker location (adjust this value to match your marker)
-    let phi = 2; // You might need to adjust this value
+    const phi = 2;
 
     const globe = createGlobe(canvasRef.current!, {
       devicePixelRatio: 2,
@@ -64,7 +63,7 @@ export default function Globe({ width = 500, height = 500 }: GlobeProps) {
       window.removeEventListener("scroll", handleScroll);
       globe.destroy();
     };
-  }, [width, height, spring, theme]);
+  }, [width, height, spring, theme, rotation]);
 
   return (
     <canvas

@@ -35,6 +35,31 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --terminal-red: 358 51% 51%;
+    --terminal-yellow: 35 65% 62%;
+    --terminal-samurai-red: 0 84% 53%;
+    --terminal-ronin-yellow: 27 100% 62%;
+    --terminal-aqua1: 164 17% 50%;
+    --terminal-dragon-blue: 204 19% 49%;
+    --terminal-gray: 62 4% 43%;
+    --terminal-violet1: 259 15% 60%;
+    --terminal-oni-violet: 262 28% 61%;
+    --terminal-crystal-blue: 219 50% 67%;
+    --terminal-violet2: 222 27% 70%;
+    --terminal-spring-blue: 196 39% 65%;
+    --terminal-light-blue: 181 38% 74%;
+    --terminal-aqua2: 165 19% 57%;
+    --terminal-spring-green: 84 37% 41%;
+    --terminal-boat-yellow1: 40 26% 46%;
+    --terminal-boat-yellow2: 40 37% 59%;
+    --terminal-carp-yellow: 39 63% 71%;
+    --terminal-sakura-pink: 340 45% 66%;
+    --terminal-wave-red: 352 69% 65%;
+    --terminal-peach-red: 359 100% 68%;
+    --terminal-surimi-orange: 24 100% 70%;
+    --terminal-bg: 48 33% 80%;
+    --terminal-fg: 240 12% 38%;
+    --terminal-bg-half: 48 9% 51%;
   }
 
   :root[class~="dark"] {
@@ -64,6 +89,9 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --terminal-bg: 240 13% 14%;
+    --terminal-fg: 48 33% 80%;
+    --terminal-spring-green: 84 36% 58%;
   }
 
   :root[class~="kanagawa"] {

@@ -17,10 +17,9 @@ import { motion, useAnimationControls } from "framer-motion";
 import { NeovimOriginalWordmark, TypescriptOriginal } from "devicons-react";
 
 import dynamic from "next/dynamic";
+import { FollowerPointerCard } from "../ui/following-pointer";
 
 export default function About() {
-  const [hoveredTech, setHoveredTech] = useState(null);
-  const [hoveredSocial, setHoveredSocial] = useState(null);
   const [currentFunFact, setCurrentFunFact] = useState(getRandomFunFact(""));
 
   return (
@@ -39,21 +38,19 @@ export default function About() {
           className="col-span-2 md:col-span-4 md:row-span-6"
           header="Connect"
           HeaderIcon={Link}
-          hoverText={hoveredSocial ? `@${hoveredSocial}` : ""}
         >
-          <Connect onHover={setHoveredSocial} />
+          <Connect />
         </BentoGridItem>
         <BentoGridItem
           className="col-span-2 md:col-span-4 md:row-span-8"
-          hoverText={hoveredTech || ""}
           header="Technologies"
           HeaderIcon={Wrench}
         >
-          <Technologies onHover={setHoveredTech} />
+          <Technologies />
         </BentoGridItem>
         <BentoGridItem
           className="col-span-1 md:col-span-2 md:row-span-3"
-          header="Favorite Tool"
+          header="Fav Tool"
           HeaderIcon={TerminalIcon}
           hoverText="I use NeoVim btw"
         >
@@ -61,7 +58,7 @@ export default function About() {
         </BentoGridItem>
         <BentoGridItem
           className="md:col-span-2 md:row-span-3"
-          header="Preferred Language"
+          header="Fav Language"
           HeaderIcon={Code}
         >
           <FavoriteLanguage />
@@ -89,26 +86,29 @@ const Location = () => {
   );
 };
 
-const Connect = ({ onHover }) => (
+const Connect = ({}) => (
   <div className="h-full flex flex-col gap-2 text-body md:text-body-desktop text-foreground/50">
     {socialMedia.map((social, index) => (
-      <a
-        key={index}
-        href={social.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex gap-2 items-center hover:text-foreground transition-colors"
-        onMouseEnter={() => onHover(social.username)}
-        onMouseLeave={() => onHover(null)}
+      <FollowerPointerCard
+        hideCursor
+        key={"social.platform-" + index}
+        title={`@${social.username}`}
       >
-        <social.icon size={20} />
-        {social.platform}
-      </a>
+        <a
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex gap-2 items-center hover:text-foreground transition-colors"
+        >
+          <social.icon size={20} />
+          {social.platform}
+        </a>
+      </FollowerPointerCard>
     ))}
   </div>
 );
 
-const Technologies = ({ onHover }) => {
+const Technologies = () => {
   const allTechnologies = Object.values(technologies).flatMap((category) =>
     Object.values(category)
   );
@@ -116,17 +116,14 @@ const Technologies = ({ onHover }) => {
   return (
     <div className="grid grid-cols-5 place-items-center justify-center h-full max-sm:pt-4">
       {allTechnologies.map((tech, index) => (
-        <motion.div
-          key={`tech-${index}`}
-          onHoverStart={() => onHover(tech.name)}
-          onHoverEnd={() => onHover(null)}
-          className="transition-colors duration-200"
-        >
-          <tech.icon
-            size={42}
-            className="transition-all duration-200 md:grayscale hover:grayscale-0"
-          />
-        </motion.div>
+        <FollowerPointerCard title={tech.name} key={"tech-" + index}>
+          <motion.div className="transition-colors duration-200">
+            <tech.icon
+              size={42}
+              className="transition-all duration-200 md:grayscale hover:grayscale-0"
+            />
+          </motion.div>
+        </FollowerPointerCard>
       ))}
     </div>
   );
