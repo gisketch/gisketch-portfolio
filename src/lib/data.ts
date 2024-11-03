@@ -282,15 +282,6 @@ export const getExperience = (technology) => {
   return currentYear - technology.yearStarted;
 };
 
-export const skills = [
-  { name: "Frontend Development", level: 90 },
-  { name: "Backend Development", level: 80 },
-  { name: "Game Development", level: 80 },
-  { name: "UI/UX Design", level: 90 },
-  { name: "Digital Art", level: 95 },
-  { name: "Open Source Contribution", level: 75 },
-];
-
 const achievements = [
   {
     title: "Zelda: GPT-3 Math Parser project",
@@ -460,7 +451,7 @@ export const socialMedia = [
     platform: "LinkedIn",
     icon: Linkedin,
     username: "glennjimenez",
-    url: "https://www.linkedin.com/in/glennjimenez/",
+    url: "https://www.linkedin.com/in/ghegijmnz/",
   },
   {
     platform: "Twitter",
@@ -478,7 +469,7 @@ export const socialMedia = [
     platform: "YouTube",
     icon: Youtube,
     username: "gisketch",
-    url: "https://www.youtube.com/gisketch",
+    url: "https://www.youtube.com/@gisketch",
   },
 ];
 
@@ -501,32 +492,16 @@ export const stats = {
 
 export const testimonials = [
   {
-    name: "John Doe",
-    position: "Project Manager at AoTTG 2",
+    name: "Tony TwoHands (Braden Marshall)",
+    position: "Manager at AoTTG 2",
     content:
-      "Glenn's contributions to AoTTG 2 have been invaluable. His skills in both game development and art have significantly improved our project.",
+      "An incredibly agreeable lad who's work ethic knows no bounds. Made a huge impact on the team and we wouldn't be half of what we are without him. If I was legally able to pay this man, he would have drained my bank account.",
   },
   {
-    name: "Jane Smith",
-    position: "Professor at University",
+    name: "Justine Paul Alvaro",
+    position: "Software Engineer",
     content:
-      "Glenn's research on GPT-3 application in mathematical parsing was innovative and well-executed. It's no surprise it won the best paper award.",
-  },
-];
-
-export const blogPosts = [
-  {
-    title: "Optimizing React Performance",
-    summary:
-      "Learn techniques to improve your React application's performance.",
-    date: "2024-03-15",
-    url: "/blog/optimizing-react-performance",
-  },
-  {
-    title: "The Art of Game UI Design",
-    summary: "Insights from my experience designing UI for AoTTG 2.",
-    date: "2024-02-28",
-    url: "/blog/game-ui-design",
+      "Glenn was great to work with at Lexagle. As a Junior Software Engineer, he picked up new ideas and technologies very quickly. Glenn is excellent at solving problems and writing code. I highly recommend him for any future jobs.",
   },
 ];
 
