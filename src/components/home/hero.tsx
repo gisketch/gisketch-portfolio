@@ -46,29 +46,31 @@ export default function Hero() {
   });
 
   return (
-    <Section ref={sectionRef} className="relative z-10 md:h-[36rem]">
+    <Section
+      ref={sectionRef}
+      className="relative z-10 md:h-[36rem]"
+      blurInView={false}
+    >
       <div className="mt-12 sm:mt-24 flex flex-col">
-        <div className="text-h2 sm:text-h1 md:text-[2.75rem] font-extrabold lg:text-hero mb-4 text-foreground">
+        <div className="text-h3 leading-5 sm:text-h1 md:text-[2.75rem] font-extrabold lg:text-hero mb-4 text-foreground">
           <div className="flex flex-row select-none">
             <div className="flex flex-col flex-1">
               <span className="whitespace-nowrap">
                 I&apos;m{" "}
                 <span className="text-terminal-oni-violet dark:text-terminal-ronin-yellow">
                   Glenn Jimenez
-                </span>{" "}
-                {isSm && ", aka "}
-                {isSm && (
-                  <span
-                    className={cn(
-                      gisketchFont.className,
-                      "ml-2 font-light",
-                      "text-terminal-oni-violet bg-gradient-to-tr from-terminal-sakura-pink to-terminal-spring-green dark:text-transparent bg-clip-text",
-                      "px-8 mx-[-1.5rem]"
-                    )}
-                  >
-                    gisketch
-                  </span>
-                )}
+                </span>
+                {", aka "}
+                <span
+                  className={cn(
+                    gisketchFont.className,
+                    "ml-2 font-light",
+                    "text-terminal-oni-violet bg-gradient-to-tr from-terminal-sakura-pink to-terminal-spring-green dark:text-transparent bg-clip-text",
+                    "px-8 mx-[-1.5rem]"
+                  )}
+                >
+                  gisketch
+                </span>
               </span>
               <span className="whitespace-nowrap">
                 a
@@ -79,18 +81,8 @@ export default function Hero() {
                 />
               </span>
             </div>
-            {!isSm && (
-              <div
-                className={cn(
-                  gisketchFont.className,
-                  "font-normal text-[1rem] text-right text-terminal-fg"
-                )}
-              >
-                gisketch
-              </div>
-            )}
           </div>
-          <p className="text-foreground/60 text-body md:text-body-desktop font-extralight flex gap-1 mt-2 whitespace-nowrap">
+          <p className="text-foreground/60 text-small sm:text-body md:text-body-desktop font-extralight flex gap-1 mt-2 whitespace-nowrap">
             {" "}
             {work.map((workText, index) => (
               <span key={`work-${index}`}>
@@ -99,7 +91,7 @@ export default function Hero() {
               </span>
             ))}
           </p>
-          <div className="mt-2 text-foreground/80 font-light text-body md:text-body-desktop flex flex-col gap-2 md:pr-[14rem] z-10">
+          <div className="mt-2 text-foreground/80 font-light text-body md:text-body-desktop flex flex-col gap-2 md:pr-[20rem] z-10">
             <Markdown
               components={{
                 strong: ({ ...props }) => (
@@ -138,7 +130,7 @@ export default function Hero() {
             </Button>
           </div>
         </div>
-        <div className="absolute top-[12rem] right-[-10rem] hidden md:block">
+        <div className="absolute top-[14rem] right-[-4rem] hidden md:block">
           {isTerminalInHero && (
             <Terminal className="h-[360px] w-[380px]">
               <pre className="whitespace-pre">{<Code />}</pre>

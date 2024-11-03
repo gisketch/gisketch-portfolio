@@ -20,9 +20,9 @@ const BlurInOnView = ({
   children,
   className,
   variant,
-  duration = 0.15,
+  duration = 0.3,
   once = true,
-  amount = 0.5
+  amount = 0.4,
 }: BlurInOnViewProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {

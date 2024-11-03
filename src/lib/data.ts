@@ -140,8 +140,8 @@ export const projects = [
   {
     name: "AoTTG 2",
     type: "game",
-    img: "/projects/aottgweb.webp", //TODO: new shots
-    subheading: "Open Source Game Development",
+    img: "/projects/aottggame.webp",
+    subheading: "Attack on Titan Community Fan Game",
     description:
       "Contributed as 2D Art Lead, Game Developer, and Web Developer for Attack on Titan Tribute Game 2. Developed game features, designed UI, and created the game's website and API.",
     technologies: [
@@ -188,7 +188,7 @@ export const projects = [
     ],
     github: "https://github.com/gisketch/pokemon-guess",
     liveDemo: "https://pokemon-guess.gisketch.com",
-    yearStarted: 2022,
+    yearStarted: 2023,
   },
   //   {
   //     name: "Zelda: GPT-3 Math Parser",
@@ -206,6 +206,7 @@ export const projects = [
     type: "game",
     img: "/projects/covid.webp",
     subheading: "Award-winning 2D Platformer Game",
+    ctaLabel: "Play Game",
     description:
       "A Unity-based 2D platformer game set in a post-apocalyptic future, where a boy travels back in time to stop COVID. Won the 2021 MCM Youth E-nnovation Summit.",
     technologies: [technologies.languages.csharp, technologies.tools.unity],

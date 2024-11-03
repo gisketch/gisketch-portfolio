@@ -1,17 +1,19 @@
 "use client";
 
 import Section from "../section";
-import { Tabs } from "../ui/tabs";
 import ExpandableCardGrid from "@/components/blocks/expandable-card-grid";
 import { projects } from "@/lib/data";
 import { Button } from "../ui/button";
 import { Folder } from "lucide-react";
 
-const cards = (type: string) =>
+const cards = (type: "game" | "web") =>
   projects
     .filter((project) => project.type === type)
     .map((project) => ({
       title: project.name,
+      subtitle: project.subheading,
+      type: project.type as "game" | "web",
+      source: project.github || null,
       technologies: project.technologies.map((tech: any) => {
         return {
           name: tech.name,
@@ -27,7 +29,7 @@ const cards = (type: string) =>
             {project.description}
             <br />
             <br />
-            <span className="text-foreground/[50%] text-small md:text-small-desktop">
+            <span className="text-foreground/[70] text-small md:text-small-desktop">
               Built in {project.yearStarted}
             </span>
           </p>
@@ -38,24 +40,11 @@ const cards = (type: string) =>
 export default function Projects() {
   return (
     <Section className="flex items-center" title="Selected Projects">
-      <div className="flex flex-col gap-8 w-full">
-        <Tabs
-          containerClassName="justify-center "
-          tabs={[
-            {
-              title: "Web",
-              value: "web",
-              content: <ExpandableCardGrid cards={cards("web")} />,
-            },
-            {
-              title: "Game",
-              value: "game",
-              content: <ExpandableCardGrid cards={cards("game")} />,
-            },
-          ]}
-        />
+      <div className="flex flex-col gap-4 w-full">
+        <ExpandableCardGrid cards={cards("web")} />
+        <ExpandableCardGrid cards={cards("game")} />
       </div>
-      <Button variant="outline">
+      <Button variant="outline" className="mt-8">
         See All <Folder />
       </Button>
     </Section>

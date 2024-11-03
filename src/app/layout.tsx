@@ -10,23 +10,8 @@ const publicSans = Public_Sans({
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-public-sans",
+  preload: true,
 });
-
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
-
-// const inter = Inter({
-//   subsets: ["latin"],
-//   variable: "--font-inter",
-// });
 
 export const metadata: Metadata = {
   title: "gisketch",
@@ -40,12 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={`${publicSans.className} antialiased overflow-x-hidden`}
-        // style={{ overflow: "hidden" }}
-        // className={publicSans.className + " antialiased"}
-      >
+      <body className={`${publicSans.className} antialiased overflow-x-hidden`}>
         <Providers>
           <Navbar />
           <CommandMenu />

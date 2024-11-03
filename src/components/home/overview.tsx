@@ -2,19 +2,17 @@
 
 import Section from "../section";
 import { ChevronRight, GitBranch } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, useBreakpoint } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import { resumeData } from "@/lib/data";
 import ResumeItem from "../blocks/resume-item";
-import { useTheme } from "next-themes";
 import { TypewriterEffect } from "../ui/typewriter-effect";
 import Terminal from "../blocks/terminal";
 import useTerminalStore from "@/store/use-terminal-store";
 import { motion } from "framer-motion";
 
 export default function Overview() {
-  const { theme } = useTheme();
   const [activeTab, setActiveTab] = useState("experiences");
   const { isTerminalInHero } = useTerminalStore();
 
@@ -23,8 +21,9 @@ export default function Overview() {
       className="flex items-center relative"
       title="Profile Overview"
       hasBgGrid
+      blurInView={false}
     >
-      <div className="relative w-full md:h-[520px] invisible md:visible">
+      <div className="relative w-full md:h-[520px] hidden md:block">
         <div className="absolute w-full h-full border-4 border-dashed rounded-xl flex justify-center items-center">
           <motion.span
             className="text-h1-desktop text-foreground/40"
@@ -66,15 +65,29 @@ export default function Overview() {
             />
           </span>
           <Resume activeTab={activeTab} setActiveTab={setActiveTab} />
-        </Terminal>
-        {theme === "dark" && (
           <>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-            <div className="absolute bottom-[-0.125rem] left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+            <motion.div
+              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
+              transition={{ duration: 1.5 }}
+              className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"
+            />
+            <motion.div
+              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
+              transition={{ duration: 1.5 }}
+              className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"
+            />
+            <motion.div
+              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
+              transition={{ duration: 1.5 }}
+              className="invisible dark:visible absolute bottom-[-0.125rem] left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"
+            />
+            <motion.div
+              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
+              transition={{ duration: 1.5 }}
+              className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"
+            />
           </>
-        )}
+        </Terminal>
       </div>
       <Resume
         activeTab={activeTab}
@@ -124,16 +137,18 @@ const Resume = ({ activeTab, setActiveTab, className = "" }) => {
     },
   ];
 
+  const { isMd } = useBreakpoint();
+
   return (
     <div className={cn("flex flex-col w-full", className)}>
       {/* Tabs */}
-      <div className="flex space-x-1 md:mt-2 mx-auto md:mx-0">
+      <div className="flex gap-2 md:gap-1 md:mt-2 mx-auto md:mx-0 justify-center md:justify-start">
         {tabs.map((tab) => (
           <Button
             key={tab.value}
             onClick={() => setActiveTab(tab.value)}
             variant="ghost"
-            size="xs"
+            size={isMd ? "xs" : "sm"}
             className={cn(
               "rounded-lg",
               `${

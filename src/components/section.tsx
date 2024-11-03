@@ -9,6 +9,7 @@ interface SectionProps {
   id?: string;
   title?: string;
   hasBgGrid?: boolean;
+  blurInView?: boolean;
   ref?: any;
 }
 
@@ -18,6 +19,7 @@ const Section = ({
   id,
   title,
   hasBgGrid = false,
+  blurInView = true,
   ref,
 }: SectionProps) => {
   const { isMd } = useBreakpoint();
@@ -49,12 +51,18 @@ const Section = ({
       )}
       {title && (
         <BlurInOnView>
-          <h1 className="text-h1 md:text-h1-desktop w-full text-center">
+          <h1 className="text-h2 font-extrabold md:text-h1-desktop w-full text-center md:mb-4">
             {title}
           </h1>
         </BlurInOnView>
       )}
-      {children}
+      {blurInView ? (
+        <BlurInOnView className="w-full h-full flex flex-col items-center">
+          {children}
+        </BlurInOnView>
+      ) : (
+        children
+      )}
     </section>
   );
 };

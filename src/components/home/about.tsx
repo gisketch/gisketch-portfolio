@@ -35,21 +35,21 @@ export default function About() {
         </BentoGridItem>
         <BentoGridItem
           hideCursor
-          className="col-span-2 md:col-span-4 md:row-span-6"
+          className="min-h-0 col-span-2 md:col-span-4 md:row-span-6"
           header="Connect"
           HeaderIcon={Link}
         >
           <Connect />
         </BentoGridItem>
         <BentoGridItem
-          className="col-span-2 md:col-span-4 md:row-span-8"
+          className="min-h-0 col-span-2 md:col-span-4 md:row-span-8"
           header="Technologies"
           HeaderIcon={Wrench}
         >
           <Technologies />
         </BentoGridItem>
         <BentoGridItem
-          className="col-span-1 md:col-span-2 md:row-span-3"
+          className="min-h-0 col-span-1 md:col-span-2 md:row-span-3"
           header="Fav Tool"
           HeaderIcon={TerminalIcon}
           hoverText="I use NeoVim btw"
@@ -57,7 +57,7 @@ export default function About() {
           <FavoriteTool />
         </BentoGridItem>
         <BentoGridItem
-          className="md:col-span-2 md:row-span-3"
+          className="min-h-0 md:col-span-2 md:row-span-3 "
           header="Fav Language"
           HeaderIcon={Code}
         >
@@ -114,7 +114,7 @@ const Technologies = () => {
   );
 
   return (
-    <div className="grid grid-cols-5 place-items-center justify-center h-full max-sm:pt-4">
+    <div className="grid grid-cols-5 place-items-center justify-center h-full gap-4 md:gap-0">
       {allTechnologies.map((tech, index) => (
         <FollowerPointerCard title={tech.name} key={"tech-" + index}>
           <motion.div className="transition-colors duration-200">

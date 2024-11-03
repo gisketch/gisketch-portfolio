@@ -3,17 +3,20 @@ import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import ShinyButton from "../ui/shiny-button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "../ui/tooltip";
-import { FollowerPointerCard } from "../ui/following-pointer";
+import { Gamepad, GlobeIcon } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface Card {
   title: string;
+  subtitle?: string;
+  source?: string;
+  type: "game" | "web";
   technologies: any[];
   src: string;
   ctaText?: string;
@@ -94,8 +97,8 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
                 <motion.div layoutId={`image-${active.title}-${id}`}>
                   <Image
                     priority
-                    width={400}
-                    height={400}
+                    width={512}
+                    height={512}
                     src={active.src}
                     alt={active.title}
                     className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
@@ -135,9 +138,23 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      // className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                      className="flex flex-row gap-2"
                     >
-                      <ShinyButton
+                      {active.source && (
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          onClick={() =>
+                            active.source
+                              ? (window.location.href = active.source)
+                              : null
+                          }
+                        >
+                          Code
+                        </Button>
+                      )}
+                      <Button
+                        size="sm"
                         onClick={() =>
                           active.ctaLink
                             ? (window.location.href = active.ctaLink)
@@ -145,7 +162,7 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
                         }
                       >
                         {active.ctaText}
-                      </ShinyButton>
+                      </Button>
                     </motion.div>
                   </div>
                   <div className="pt-4 relative px-4">
@@ -168,54 +185,59 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
         </AnimatePresence>
         <ul className="mx-auto w-full grid grid-cols-1 md:grid-cols-2 items-start gap-4">
           {cards.map((card, index) => (
-            <FollowerPointerCard
-              title="Click for more details"
-              hideCursor
+            <motion.div
               key={`${card.title}-${index}`}
+              layoutId={`card-${card.title}-${id}`}
+              onClick={() => setActive(card)}
+              className="group transition-shadow dark:transition-colors p-4 flex flex-col rounded-xl border-border shadow-none hover:shadow-xl dark:hover:shadow-none shadow-input dark:border-border border dark:hover:border-terminal-oni-violet/50 dark:hover:bg-terminal-oni-violet/20 cursor-pointer"
             >
-              <motion.div
-                layoutId={`card-${card.title}-${id}`}
-                onClick={() => setActive(card)}
-                className="p-4 flex flex-col  hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-xl border-border border"
-              >
-                <div className="flex gap-4 flex-col  w-full">
-                  <motion.div layoutId={`image-${card.title}-${id}`}>
-                    <Image
-                      width={300}
-                      height={300}
-                      src={card.src}
-                      alt={card.title}
-                      className="h-60 w-full  rounded-lg object-cover object-top"
-                    />
-                  </motion.div>
-                  <div className="flex justify-center items-start flex-col gap-2">
-                    <motion.h3
-                      layoutId={`title-${card.title}-${id}`}
-                      className="font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left text-body md:text-body-desktop"
-                    >
-                      {card.title}
-                    </motion.h3>
-                    <motion.div
-                      layoutId={`technologies-${card.technologies
-                        .map((tech) => tech.name)
-                        .join("-")}-${id}`}
-                      className="text-neutral-600 dark:text-neutral-400 text-center md:text-left flex gap-2 flex-wrap justify-center md:justify-start"
-                    >
-                      {card.technologies.map((tech, index) =>
-                        tech.icon ? (
-                          <Tooltip key={index}>
-                            <TooltipTrigger asChild>
-                              <tech.icon className="w-6 h-6" />
-                            </TooltipTrigger>
-                            <TooltipContent>{tech.name}</TooltipContent>
-                          </Tooltip>
-                        ) : null
+              <div className="flex gap-4 flex-col w-full">
+                <motion.div layoutId={`image-${card.title}-${id}`}>
+                  <Image
+                    width={512}
+                    height={512}
+                    src={card.src}
+                    alt={card.title}
+                    className="h-60 w-full  rounded-lg object-cover object-top"
+                  />
+                </motion.div>
+                <div className="flex justify-center items-start flex-col">
+                  <motion.h3
+                    layoutId={`title-${card.title}-${id}`}
+                    className="group-hover:dark:text-terminal-oni-violet font-medium text-neutral-800 dark:text-neutral-200 text-center md:text-left text-body md:text-body-desktop flex flex-row gap-2 items-center"
+                  >
+                    <span className="text-foreground/40 group-hover:text-foreground/50 group-hover:dark:text-terminal-oni-violet">
+                      {card.type === "game" ? (
+                        <Gamepad size={16} />
+                      ) : (
+                        <GlobeIcon size={16} />
                       )}
-                    </motion.div>
-                  </div>
+                    </span>
+                    {card.title}
+                  </motion.h3>
+                  <motion.p className="group-hover:dark:text-terminal-oni-violet/50 text-small md:text-small-desktop text-foreground/40">
+                    {card.subtitle}
+                  </motion.p>
+                  <motion.div
+                    layoutId={`technologies-${card.technologies
+                      .map((tech) => tech.name)
+                      .join("-")}-${id}`}
+                    className="text-neutral-600 dark:text-neutral-400 text-center md:text-left flex gap-2 flex-wrap justify-center md:justify-start mt-2 md:mt-4"
+                  >
+                    {card.technologies.map((tech, index) =>
+                      tech.icon ? (
+                        <Tooltip key={index}>
+                          <TooltipTrigger asChild>
+                            <tech.icon className="w-6 h-6" />
+                          </TooltipTrigger>
+                          <TooltipContent>{tech.name}</TooltipContent>
+                        </Tooltip>
+                      ) : null
+                    )}
+                  </motion.div>
                 </div>
-              </motion.div>
-            </FollowerPointerCard>
+              </div>
+            </motion.div>
           ))}
         </ul>
       </TooltipProvider>

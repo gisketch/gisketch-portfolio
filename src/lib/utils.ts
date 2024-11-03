@@ -5,17 +5,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-import { useState, useEffect } from "react";
+import useBreakpointOriginal from "use-breakpoint";
 
-const breakpoints = {
+const BREAKPOINTS = {
   sm: 640,
   md: 768,
   lg: 1024,
   xl: 1280,
   "2xl": 1536,
-};
+} as const;
 
-type Breakpoint = keyof typeof breakpoints;
+type Breakpoint = keyof typeof BREAKPOINTS;
 
 interface BreakpointState {
   isSm: boolean;
@@ -27,51 +27,33 @@ interface BreakpointState {
 }
 
 export const useBreakpoint = () => {
-  const [breakpoint, setBreakpoint] = useState<BreakpointState>({
-    isSm: false,
-    isMd: false,
-    isLg: false,
-    isXl: false,
-    is2Xl: false,
-    active: null,
-  });
+  // Use the original hook with a default breakpoint for SSR
+  const { breakpoint } = useBreakpointOriginal(BREAKPOINTS, "sm");
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
+  // Convert the single breakpoint value to your existing interface
+  const state: BreakpointState = {
+    isSm: breakpoint
+      ? BREAKPOINTS[breakpoint as Breakpoint] >= BREAKPOINTS.sm
+      : false,
+    isMd: breakpoint
+      ? BREAKPOINTS[breakpoint as Breakpoint] >= BREAKPOINTS.md
+      : false,
+    isLg: breakpoint
+      ? BREAKPOINTS[breakpoint as Breakpoint] >= BREAKPOINTS.lg
+      : false,
+    isXl: breakpoint
+      ? BREAKPOINTS[breakpoint as Breakpoint] >= BREAKPOINTS.xl
+      : false,
+    is2Xl: breakpoint
+      ? BREAKPOINTS[breakpoint as Breakpoint] >= BREAKPOINTS["2xl"]
+      : false,
+    active: breakpoint as Breakpoint | null,
+  };
 
-      setBreakpoint({
-        isSm: width >= breakpoints.sm,
-        isMd: width >= breakpoints.md,
-        isLg: width >= breakpoints.lg,
-        isXl: width >= breakpoints.xl,
-        is2Xl: width >= breakpoints["2xl"],
-        active:
-          width >= breakpoints["2xl"]
-            ? "2xl"
-            : width >= breakpoints.xl
-            ? "xl"
-            : width >= breakpoints.lg
-            ? "lg"
-            : width >= breakpoints.md
-            ? "md"
-            : width >= breakpoints.sm
-            ? "sm"
-            : null,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return breakpoint;
+  return state;
 };
 
-export { breakpoints };
+export { BREAKPOINTS as breakpoints };
 
 export function formatDate(data) {
   const months = [
