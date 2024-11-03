@@ -1,4 +1,3 @@
-// components/layout/Navbar.tsx
 "use client";
 
 import { COMMAND_MENU_ITEMS } from "@/lib/command-menu-config";
@@ -27,71 +26,94 @@ export function Navbar() {
   )?.items;
 
   return (
-    <header className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2">
-      <TooltipProvider>
-        <Dock
-          className="rounded-full border bg-background/80 backdrop-blur-sm py-8"
-          direction="middle"
-          distance={24}
-        >
-          {/* Main Navigation */}
-          {navItems?.map((item) => (
-            <DockIcon key={item.children}>
+    <>
+      {/* Desktop Floating Dock (hidden on mobile) */}
+      <header className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 hidden md:block">
+        <TooltipProvider>
+          <Dock
+            className="rounded-full border bg-background/80 backdrop-blur-sm py-8"
+            direction="middle"
+            distance={24}
+          >
+            {/* Main Navigation */}
+            {navItems?.map((item) => (
+              <DockIcon key={item.children}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={item.href || ""}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full"
+                      )}
+                    >
+                      <item.icon className="size-4" />
+                      <span className="sr-only">{item.children}</span>
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{item.children}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            ))}
+
+            <Separator orientation="vertical" className="h-8" />
+
+            {/* Utilities */}
+            <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
-                    href={item.href || ""}
+                  <ModeToggle className="rounded-full" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Toggle theme</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+
+            <DockIcon>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full"
                     )}
+                    onClick={() => setIsOpen(true)}
                   >
-                    <item.icon className="size-4" />
-                    <span className="sr-only">{item.children}</span>
-                  </Link>
+                    <CommandIcon className="size-4" />
+                    <span className="sr-only">Command palette</span>
+                  </button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{item.children}</p>
+                  <p>Command palette (⌘+K)</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
+          </Dock>
+        </TooltipProvider>
+      </header>
+
+      {/* Mobile Fixed Bottom Dock */}
+      <header className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/80 backdrop-blur-sm md:hidden">
+        <nav className="flex items-center justify-around p-4">
+          {navItems?.map((item) => (
+            <Link
+              key={item.children}
+              href={item.href || ""}
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "icon" }),
+                "size-10 rounded-full"
+              )}
+            >
+              <item.icon className="size-4" />
+              <span className="sr-only">{item.children}</span>
+            </Link>
           ))}
-
-          <Separator orientation="vertical" className="h-8" />
-
-          {/* Utilities */}
-          <DockIcon>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <ModeToggle className="rounded-full" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Toggle theme</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
-
-          <DockIcon>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button
-                  className={cn(
-                    buttonVariants({ variant: "ghost", size: "icon" }),
-                    "size-12 rounded-full"
-                  )}
-                  onClick={() => setIsOpen(true)}
-                >
-                  <CommandIcon className="size-4" />
-                  <span className="sr-only">Command palette</span>
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Command palette (⌘+K)</p>
-              </TooltipContent>
-            </Tooltip>
-          </DockIcon>
-        </Dock>
-      </TooltipProvider>
-    </header>
+          <ModeToggle className="size-10 rounded-full" />
+        </nav>
+      </header>
+    </>
   );
 }
