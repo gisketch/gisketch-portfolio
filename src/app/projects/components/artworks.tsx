@@ -2,6 +2,7 @@
 import Section from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { LayoutGrid } from "@/components/ui/layout-grid";
+import { ArtworkModal } from "./artworks/artwork-modal";
 
 const ArtDescription = ({
   title,
@@ -25,8 +26,8 @@ const artworks = [
     id: 1,
     content: (
       <ArtDescription
-        title="Mikasa - AOT Fanart"
-        description="A tribute to Attack on Titan's strongest soldier, capturing her determination and fierce loyalty."
+        title="Mikasa and Eren"
+        description="My depiction of the final scene of Mikasa and Eren."
       />
     ),
     className: "md:col-span-7 md:row-span-2",
@@ -36,8 +37,8 @@ const artworks = [
     id: 4,
     content: (
       <ArtDescription
-        title="Beautiful Girl Art"
-        description="A portrait capturing the essence of beauty and grace, with attention to subtle emotional expressions."
+        title="Jiji"
+        description="Me practicing my digital painting skills. Decided to paint someone very special to me."
       />
     ),
     className: "md:col-span-4 md:row-span-3",
@@ -48,7 +49,7 @@ const artworks = [
     content: (
       <ArtDescription
         title="Breath of the Wild Landscape"
-        description="A minimalist interpretation of Hyrule's vast landscapes, showcasing the serene beauty of the game's open world."
+        description="I love BotW so much! This is my version of the promotional image of BotW in flat style."
       />
     ),
     className: "md:col-span-4 md:row-span-1",
@@ -59,7 +60,7 @@ const artworks = [
     content: (
       <ArtDescription
         title="Stylized Portrait"
-        description="A contemporary take on portraiture, blending modern aesthetics with classical composition techniques."
+        description="Testing the waters with artstyle. I love the colors as well as the linework here."
       />
     ),
     className: "md:col-span-3 md:row-span-1",
@@ -69,8 +70,8 @@ const artworks = [
     id: 7,
     content: (
       <ArtDescription
-        title="Makima Fanart"
-        description="A haunting portrayal of Chainsaw Man's complex antagonist, emphasizing her mysterious and commanding presence."
+        title="Makima"
+        description="My favorite character in Chainsaw Man!"
       />
     ),
     className: "md:col-span-5 md:row-span-4",
@@ -82,7 +83,7 @@ const artworks = [
     content: (
       <ArtDescription
         title="Zelda and Link"
-        description="A romantic portrayal of the iconic duo from The Legend of Zelda series, capturing their eternal bond in a moment of peaceful connection."
+        description="Such an emotional scene in BotW. Left an impact on me that I decided to make a fanart for it. This received 20k upvotes in reddit."
       />
     ),
     className: "md:col-span-6 md:row-span-2",
@@ -92,8 +93,8 @@ const artworks = [
     id: 3,
     content: (
       <ArtDescription
-        title="Cozy Art"
-        description="A warm and inviting piece that embodies the essence of comfort and tranquility in everyday moments."
+        title="Cozy Me"
+        description="Me with my dog in my room."
       />
     ),
     className: "md:col-span-6 md:row-span-2",
@@ -120,6 +121,7 @@ export default function Artworks() {
       <div className="w-full mt-2 md:mt-6">
         <LayoutGrid cards={artworks} />
       </div>
+      <ArtworkModal />
     </Section>
   );
 }

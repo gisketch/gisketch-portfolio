@@ -34,6 +34,7 @@ export default function Overview() {
         </div>
         <Terminal
           className="absolute"
+          initial={{ opacity: 0 }}
           animate={{ opacity: isTerminalInHero ? 0 : 1 }}
         >
           <span className="opacity-80">zsh 3.1.6</span>

@@ -6,7 +6,8 @@ import Artworks from "./components/artworks";
 
 export default function ProjectPage() {
   return (
-    <div className="bg-dot-black/40 dark:bg-dot-white/30 pb-24">
+    <div className="min-h-screen relative pb-24">
+      <div className="fixed inset-0 w-full h-full bg-dot-black/40 dark:bg-dot-white/30 -z-10" />
       <Heading />
       <Repos />
       <Artworks />
