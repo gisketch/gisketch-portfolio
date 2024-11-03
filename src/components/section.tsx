@@ -1,11 +1,13 @@
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import BlurInOnView from "./ui/blur-in-on-view";
-import { useBreakpoint } from "@/lib/utils";
+import { cn, useBreakpoint } from "@/lib/utils";
 
 interface SectionProps {
   children: ReactNode;
   className?: string;
+  titleClassName?: string;
+  contentClassName?: string;
   id?: string;
   title?: string;
   hasBgGrid?: boolean;
@@ -16,6 +18,8 @@ interface SectionProps {
 const Section = ({
   children,
   className,
+  contentClassName, //only use if blurinview
+  titleClassName,
   id,
   title,
   hasBgGrid = false,
@@ -28,7 +32,7 @@ const Section = ({
       id={id}
       ref={ref}
       className={twMerge(
-        "w-full mb-16 md:mb-24",
+        "w-full mb-12 md:mb-24",
         "px-4 sm:px-8",
         "flex flex-col gap-8",
         className
@@ -51,13 +55,23 @@ const Section = ({
       )}
       {title && (
         <BlurInOnView>
-          <h1 className="text-h2 font-extrabold md:text-h1-desktop w-full text-center md:mb-4">
+          <h1
+            className={cn(
+              "text-h2 font-extrabold md:text-h1-desktop w-full text-center md:mb-4",
+              titleClassName
+            )}
+          >
             {title}
           </h1>
         </BlurInOnView>
       )}
       {blurInView ? (
-        <BlurInOnView className="w-full h-full flex flex-col items-center">
+        <BlurInOnView
+          className={cn(
+            "w-full h-full flex flex-col items-center",
+            contentClassName
+          )}
+        >
           {children}
         </BlurInOnView>
       ) : (

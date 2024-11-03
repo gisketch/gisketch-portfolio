@@ -28,7 +28,7 @@ const pillStyles = [
 export default function Hero() {
   const sectionRef = useRef(null);
   const { isTerminalInHero, setIsTerminalInHero } = useTerminalStore();
-  const { isSm, isMd } = useBreakpoint();
+  const { isMd } = useBreakpoint();
   const { titles, work, descriptions, hobbies } = about();
   const { scrollYProgress } = useScroll({
     target: sectionRef,

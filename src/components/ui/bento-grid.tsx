@@ -1,3 +1,4 @@
+"use client";
 import { cn, useBreakpoint } from "@/lib/utils";
 import React from "react";
 import { FollowerPointerCard } from "./following-pointer";

@@ -25,9 +25,6 @@ export function Navbar() {
   const navItems = COMMAND_MENU_ITEMS.find(
     (group) => group.id === "navigation"
   )?.items;
-  const socialItems = COMMAND_MENU_ITEMS.find(
-    (group) => group.id === "social"
-  )?.items;
 
   return (
     <header className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2">
@@ -44,33 +41,6 @@ export function Navbar() {
                 <TooltipTrigger asChild>
                   <Link
                     href={item.href || ""}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <item.icon className="size-4" />
-                    <span className="sr-only">{item.children}</span>
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.children}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
-
-          <Separator orientation="vertical" className="h-8" />
-
-          {/* Social Links */}
-          {socialItems?.map((item) => (
-            <DockIcon key={item.children}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={item.href || ""}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full"

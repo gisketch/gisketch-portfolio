@@ -83,12 +83,6 @@ export const technologies = {
       shortname: "Node",
       yearStarted: 2021,
     },
-    // expressjs: {
-    //   name: "Express.js",
-    //   icon: ExpressOriginal,
-    //   shortname: "Express",
-    //   yearStarted: 2021,
-    // },
     tailwindcss: {
       name: "Tailwind CSS",
       icon: TailwindcssOriginal,
@@ -103,12 +97,6 @@ export const technologies = {
       shortname: "Neovim",
       yearStarted: 2023,
     },
-    // vscode: {
-    //   name: "Visual Studio Code",
-    //   icon: VscodeOriginal,
-    //   shortname: "VS Code",
-    //   yearStarted: 2023,
-    // },
     unity: {
       name: "Unity",
       icon: UnityOriginal,
@@ -186,21 +174,11 @@ export const projects = [
       technologies.languages.html,
       technologies.languages.css,
     ],
-    github: "https://github.com/gisketch/pokemon-guess",
-    liveDemo: "https://pokemon-guess.gisketch.com",
+    github: "https://github.com/gisketch/pokemon-guessing-game",
+    liveDemo: "https://pokemon.gisketch.com",
     yearStarted: 2023,
   },
-  //   {
-  //     name: "Zelda: GPT-3 Math Parser",
-  //     type: "web",
-  //     subheading: "Natural Language Mathematical Expression Parser",
-  //     description:
-  //       "An AI-powered application that parses natural language into mathematical expressions using GPT-3. Won best research paper at the university.",
-  //     technologies: ["JavaScript", "React", "GPT-3 API"],
-  //     github: "https://github.com/gisketch/zelda-gpt3-math",
-  //     liveDemo: "https://zelda-math.gisketch.com",
-  //     yearStarted: 2022,
-  //   },
+
   {
     name: "COVID: Armageddon",
     type: "game",
@@ -211,13 +189,13 @@ export const projects = [
       "A Unity-based 2D platformer game set in a post-apocalyptic future, where a boy travels back in time to stop COVID. Won the 2021 MCM Youth E-nnovation Summit.",
     technologies: [technologies.languages.csharp, technologies.tools.unity],
     github: "https://github.com/gisketch/covid-armageddon",
-    liveDemo: "https://gisketch.itch.io/covid-armageddon",
+    liveDemo: "https://github.com/gisketch/covid-armageddon",
     yearStarted: 2021,
   },
 ];
 
 function getLearningsText() {
-  const learning = ["NextJS", "TODO"];
+  const learning = ["NextJS"];
 
   if (learning.length === 0) return "";
   if (learning.length === 1) return learning[0];
@@ -552,41 +530,76 @@ export const blogPosts = [
   },
 ];
 
-export const currentFocus = () => {
-  return {
-    learning: ["GraphQL", "AWS", "Machine Learning"],
-    improving: ["System Design", "Algorithm Optimization"],
-    exploring: ["Web3 Technologies", "AR/VR Development"],
-  };
-};
-
-export const getRecentActivity = async () => {
-  // This function could fetch recent GitHub activity, latest blog posts, or recent art uploads
-  // You would implement the actual API calls here
-  return {
-    githubActivity: [
-      { type: "commit", repo: "AoTTG-2", date: "2024-03-20" },
-      { type: "pull request", repo: "personal-portfolio", date: "2024-03-18" },
-    ],
-    latestArtwork: {
-      title: "Cyberpunk City",
-      date: "2024-03-15",
-      url: "https://instagram.com/p/artwork123",
-    },
-    latestBlogPost: blogPosts[0],
-  };
-};
-
 export const getRandomFunFact = (funFact) => {
   let funFacts = [
-    "I can play the Zelda theme on both guitar and keyboard!",
-    "My first game was made in MS Paint and PowerPoint when I was 10.",
-    "I once stayed up for 48 hours straight to finish a game jam project.",
-    "I've contributed to open-source projects in 5 different programming languages.",
-    "My GitHub contribution graph once spelled out 'HELLO' over a month of commits.",
+    "I was the first senior artist in the AoTTG 2 skinning community.",
+    "I learned how to use the computer at the age of 3.",
+    "I did most of my animations with only a mouse.",
+    "I play the keyboard and the guitar.",
   ];
 
   funFacts = funFacts.filter((fact) => fact !== funFact);
 
   return funFacts[Math.floor(Math.random() * funFacts.length)];
 };
+
+export const repositories = [
+  {
+    name: "AoTTG 2 Website",
+    language: "TypeScript",
+    description:
+      "Designed and developed the official website for Attack on Titan Tribute Game 2, serving as the main hub for the game's community. The website maintains the game's visual identity while providing an intuitive user experience for both new and existing players.",
+    url: "https://github.com/AoTTG-2/AoTTG2-Website",
+    demo: "https://aottg2.com",
+    owner: "AoTTG-2",
+    repo: "AoTTG2-Website",
+  },
+  {
+    name: "Who's that Pokemon",
+    language: "TypeScript",
+    description:
+      "A React-based game where players guess Pokémon names as quickly as possible, featuring leaderboards and Redux state management.",
+    url: "https://github.com/gisketch/pokemon-guessing-game",
+    demo: "https://pokemon.gisketch.com",
+    owner: "gisketch",
+    repo: "pokemon-guessing-game",
+  },
+  {
+    name: "AoTTG 2",
+    language: "C#",
+    description:
+      "Contributed as 2D Art Lead, Game Developer, and Web Developer for Attack on Titan Tribute Game 2. Developed game features, designed UI, and created the game's website and API.",
+    url: "https://github.com/AoTTG-2/AoTTG-2-Unity",
+    demo: "https://aottg2.com",
+    owner: "AoTTG-2",
+    repo: "AoTTG2-Unity",
+  },
+  {
+    name: "COVID: Armageddon",
+    language: "C#",
+    description:
+      "COVID Armageddon is a 2D platformer game developed in Unity 3D, and was declared the champion of the 2021 MCM Youth E-nnovation Summit.",
+    url: "https://github.com/gisketch/ZELDA-math-parser",
+    demo: "https://github.com/gisketch/ZELDA-math-parser",
+    owner: "gisketch",
+    repo: "covid-armageddon",
+  },
+  {
+    name: "ZELDA: Math Parser",
+    language: "JavaScript",
+    description:
+      "Zelda is a natural language mathematical expression parser powered by OpenAI's GPT-3 language model. It is designed to work on a touch screen display used in Raspberry Pi. The application is built in JavaScript and ReactJS.",
+    url: "https://github.com/gisketch/ZELDA-math-parser",
+    owner: "gisketch",
+    repo: "ZELDA-math-parser",
+  },
+  {
+    name: "Complete Uniform Detection",
+    language: "Python",
+    description:
+      "The software employs the YOLOv8 algorithm to analyze video footage captured by a camera, enabling it to determine whether students at the University of Southern Mindanao (USM) are wearing complete or incomplete uniforms.",
+    url: "https://github.com/gisketch/complete-uniform-detection-YOLOv8",
+    owner: "gisketch",
+    repo: "complete-uniform-detection-YOLOv8",
+  },
+];

@@ -41,12 +41,6 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
       }
     }
 
-    // if (active && typeof active === "object") {
-    //   document.body.style.overflow = "hidden";
-    // } else {
-    //   document.body.style.overflow = "auto";
-    // }
-
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [active]);
@@ -132,7 +126,6 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
                         )}
                       </motion.div>
                     </div>
-
                     <motion.div
                       layout
                       initial={{ opacity: 0 }}
@@ -146,7 +139,11 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
                           variant="secondary"
                           onClick={() =>
                             active.source
-                              ? (window.location.href = active.source)
+                              ? window.open(
+                                  active.source,
+                                  "_blank",
+                                  "noopener,noreferrer"
+                                )
                               : null
                           }
                         >
@@ -157,7 +154,11 @@ export default function ExpandableCardGrid({ cards }: ExpandableCardGridProps) {
                         size="sm"
                         onClick={() =>
                           active.ctaLink
-                            ? (window.location.href = active.ctaLink)
+                            ? window.open(
+                                active.ctaLink,
+                                "_blank",
+                                "noopener,noreferrer"
+                              )
                             : null
                         }
                       >

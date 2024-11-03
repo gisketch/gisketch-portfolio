@@ -52,7 +52,7 @@ export default function About() {
           className="min-h-0 col-span-1 md:col-span-2 md:row-span-3"
           header="Fav Tool"
           HeaderIcon={TerminalIcon}
-          hoverText="I use NeoVim btw"
+          hoverText="I use neovim btw"
         >
           <FavoriteTool />
         </BentoGridItem>
