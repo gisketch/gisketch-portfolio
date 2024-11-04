@@ -12,6 +12,9 @@ import Markdown from "react-markdown";
 import Code from "./hero/code";
 import { cn, useBreakpoint } from "@/lib/utils";
 import localFont from "next/font/local";
+import { RocketIcon, FileTextIcon } from "lucide-react";
+import Link from "next/link";
+import { RainbowButton } from "../ui/rainbow-button";
 
 const gisketchFont = localFont({
   src: "../../app/fonts/Gisketch.otf",
@@ -118,15 +121,20 @@ export default function Hero() {
               </div>
             ))}
           </div>
-          <div className="flex gap-2 text-body md:text-body-desktop mt-4 md:mt-6">
-            <Button variant="default" className="border border-transparent">
-              See my work
-            </Button>
+          <div className="flex flex-col items-start md:flex-row gap-4 text-body md:text-body-desktop my-8 md:mt-6 md:items-center">
+            <Link href="/projects">
+              <RainbowButton className="h-10 rounded-lg px-6">
+                <RocketIcon className="w-4 h-4 mr-2" />
+                Explore Projects
+              </RainbowButton>
+            </Link>
             <Button
-              variant="default"
-              className="bg-background border border-border text-foreground hover:bg-foreground/20"
+              variant="outline"
+              size="lg"
+              className="h-11 bg-background border border-border text-foreground hover:bg-foreground/20 px-6"
             >
-              Resume
+              <FileTextIcon className="w-4 h-4 mr-1" />
+              Résumé
             </Button>
           </div>
         </div>

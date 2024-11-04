@@ -18,7 +18,7 @@ function addVariablesForColors({ addBase, theme }: any) {
 }
 
 const config: Config = {
-  darkMode: "class",
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -26,11 +26,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // fontFamily: {
-      //   sans: ["var(--font-public-sans)"],
-      // },
+      boxShadow: {
+        input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
+      },
       fontSize: {
-        // Mobile first approach
         hero: [
           "3rem",
           {
@@ -70,8 +69,6 @@ const config: Config = {
         body: ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0" }],
         small: ["0.75rem", { lineHeight: "1rem", letterSpacing: "0" }],
         tiny: ["0.675rem", { lineHeight: "0.875rem", letterSpacing: "0" }],
-
-        // Desktop sizes
         "hero-desktop": [
           "3.25rem",
           {
@@ -84,34 +81,6 @@ const config: Config = {
           "2.25rem",
           { lineHeight: "2.5rem", letterSpacing: "-0.02em", fontWeight: "700" },
         ],
-        "h2-desktop": [
-          "1.875rem",
-          {
-            lineHeight: "2.25rem",
-            letterSpacing: "-0.02em",
-            fontWeight: "600",
-          },
-        ],
-        "h3-desktop": [
-          "1.5rem",
-          { lineHeight: "2rem", letterSpacing: "-0.01em", fontWeight: "600" },
-        ],
-        "h4-desktop": [
-          "1.25rem",
-          {
-            lineHeight: "1.75rem",
-            letterSpacing: "-0.01em",
-            fontWeight: "600",
-          },
-        ],
-        "subheading-desktop": [
-          "1.125rem",
-          {
-            lineHeight: "1.75rem",
-            letterSpacing: "-0.01em",
-            fontWeight: "500",
-          },
-        ],
         "body-desktop": ["1rem", { lineHeight: "1.5rem", letterSpacing: "0" }],
         "small-desktop": [
           "0.875rem",
@@ -119,7 +88,6 @@ const config: Config = {
         ],
         "tiny-desktop": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0" }],
       },
-
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -188,6 +156,11 @@ const config: Config = {
           "peach-red": "hsl(var(--terminal-peach-red))",
           "surimi-orange": "hsl(var(--terminal-surimi-orange))",
         },
+        "color-1": "hsl(var(--color-1))",
+        "color-2": "hsl(var(--color-2))",
+        "color-3": "hsl(var(--color-3))",
+        "color-4": "hsl(var(--color-4))",
+        "color-5": "hsl(var(--color-5))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -195,17 +168,46 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       animation: {
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         spotlight: "spotlight 2s ease .75s 1 forwards",
         "shimmer-slide":
           "shimmer-slide var(--speed) ease-in-out infinite alternate",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
-
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        rainbow: "rainbow var(--speed, 2s) infinite linear",
       },
       keyframes: {
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
+        marquee: {
+          from: {
+            transform: "translateX(0)",
+          },
+          to: {
+            transform: "translateX(calc(-100% - var(--gap)))",
+          },
+        },
+        "marquee-vertical": {
+          from: {
+            transform: "translateY(0)",
+          },
+          to: {
+            transform: "translateY(calc(-100% - var(--gap)))",
+          },
+        },
         pulse: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
+          "0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: "0.5",
+          },
         },
         "spin-around": {
           "0%": {
@@ -234,6 +236,14 @@ const config: Config = {
           "100%": {
             opacity: "1",
             transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+        rainbow: {
+          "0%": {
+            "background-position": "0%",
+          },
+          "100%": {
+            "background-position": "200%",
           },
         },
       },

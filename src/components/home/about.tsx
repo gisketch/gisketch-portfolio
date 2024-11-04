@@ -23,7 +23,7 @@ export default function About() {
   const [currentFunFact, setCurrentFunFact] = useState(getRandomFunFact(""));
 
   return (
-    <Section className="flex items-center" title="About Me">
+    <Section className="flex items-center" title="Bits & Pieces of Me">
       <BentoGrid className="w-full mx-auto md:grid-cols-8 grid-cols-2 md:grid-rows-12 md:h-[500px]">
         <BentoGridItem
           className="col-span-2 md:col-span-4 md:row-span-4 select-none"

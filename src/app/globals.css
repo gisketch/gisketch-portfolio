@@ -60,9 +60,19 @@ body {
     --terminal-bg: 48 33% 80%;
     --terminal-fg: 240 12% 38%;
     --terminal-bg-half: 48 9% 51%;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
   }
 
   :root[class~="dark"] {
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
     --background: 0 0% 1.5%;
     /* --background: #09090d; */
     --foreground: 0 0% 98%;

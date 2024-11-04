@@ -121,7 +121,7 @@ export const FollowPointer = ({
         strokeWidth="1"
         viewBox="0 0 16 16"
         className={cn(
-          "h-6 w-6 text-foreground transform -rotate-[70deg] -translate-x-[12px] -translate-y-[10px]",
+          "h-6 w-6 text-terminal-oni-violet dark:text-terminal-ronin-yellow transform -rotate-[70deg] -translate-x-[12px] -translate-y-[10px]",
           hideCursor ? "invisible" : "visible"
         )}
         height="1em"
@@ -148,7 +148,7 @@ export const FollowPointer = ({
         }}
         className={cn(
           "px-2 py-2 text-white whitespace-nowrap min-w-max text-xs rounded-full",
-          hideCursor ? "mt-6" : "mt-0"
+          hideCursor ? "mt-2" : "mt-0"
         )}
       >
         {title || "..."}

@@ -493,15 +493,21 @@ export const stats = {
 export const testimonials = [
   {
     name: "Tony TwoHands (Braden Marshall)",
-    position: "Manager at AoTTG 2",
-    content:
-      "An incredibly agreeable lad who's work ethic knows no bounds. Made a huge impact on the team and we wouldn't be half of what we are without him. If I was legally able to pay this man, he would have drained my bank account.",
+    title: "Manager at AoTTG 2",
+    quote:
+      "An **incredibly agreeable** lad whose **work ethic knows no bounds**. Made a **huge impact** on the team and we wouldn't be half of what we are without him. If I was legally able to pay this man, he would have **drained my bank account**.",
   },
   {
     name: "Justine Paul Alvaro",
-    position: "Software Engineer",
-    content:
-      "Glenn was great to work with at Lexagle. As a Junior Software Engineer, he picked up new ideas and technologies very quickly. Glenn is excellent at solving problems and writing code. I highly recommend him for any future jobs.",
+    title: "Software Engineer",
+    quote:
+      "Glenn was **great to work with** at Lexagle. As a Junior Software Engineer, he **picked up new ideas and technologies very quickly**. Glenn is **excellent at solving problems and writing code**. I **highly recommend** him for any future jobs.",
+  },
+  {
+    name: "Christian Razul",
+    title: "Software Engineer",
+    quote:
+      "Glenn is an **unforgettable coworker** for all the good reasons. He's easy to work with and an excellent developer, consistently delivering clean, well-documented code. His **attention to detail is like no other**, and he has a remarkable ability to explain complex concepts to stakeholders at all levels.",
   },
 ];
 

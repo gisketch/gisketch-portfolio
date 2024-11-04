@@ -19,7 +19,7 @@ export default function Overview() {
   return (
     <Section
       className="flex items-center relative"
-      title="Profile Overview"
+      title="What I've Been Up To"
       hasBgGrid
       blurInView={false}
     >
