@@ -16,9 +16,29 @@ import {
 import { ModeToggle } from "@/components/mode-toggle";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { useCommandStore } from "@/store/use-command-store";
+import { useState } from "react";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export function Navbar() {
   const { setIsOpen } = useCommandStore();
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  // Function to check if we're at the bottom of the page
+  const checkIfBottom = () => {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    // Add a small threshold (1px) to account for decimal values
+    const isBottom = Math.abs(scrollTop + windowHeight - documentHeight) < 1;
+    setIsAtBottom(isBottom);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkIfBottom);
+    return () => window.removeEventListener("scroll", checkIfBottom);
+  }, []);
 
   // Get navigation items from the shared config
   const navItems = COMMAND_MENU_ITEMS.find(
@@ -28,7 +48,11 @@ export function Navbar() {
   return (
     <>
       {/* Desktop Floating Dock (hidden on mobile) */}
-      <header className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 hidden md:block">
+      <motion.header
+        className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 hidden md:block"
+        animate={{ opacity: isAtBottom ? 0 : 1 }}
+        transition={{ duration: 0.3 }}
+      >
         <TooltipProvider>
           <Dock
             className="rounded-full border bg-background/80 backdrop-blur-sm py-8"
@@ -93,10 +117,14 @@ export function Navbar() {
             </DockIcon>
           </Dock>
         </TooltipProvider>
-      </header>
+      </motion.header>
 
       {/* Mobile Fixed Bottom Dock */}
-      <header className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/80 backdrop-blur-sm md:hidden">
+      <motion.header
+        className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background/80 backdrop-blur-sm md:hidden"
+        animate={{ y: isAtBottom ? 100 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <nav className="flex items-center justify-around p-4">
           {navItems?.map((item) => (
             <Link
@@ -113,7 +141,7 @@ export function Navbar() {
           ))}
           <ModeToggle className="size-10 rounded-full" />
         </nav>
-      </header>
+      </motion.header>
     </>
   );
 }

@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 import { CommandMenu } from "@/components/command-palette";
 import { about } from "@/lib/data";
 import JsonLd from "@/components/JsonLd";
+import { Footer } from "@/components/home/footer";
 
 const { descriptions } = about();
 
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     default: "Glenn Jimenez | Full-Stack Developer (gisketch)",
     template: "%s | Glenn Jimenez (gisketch)",
   },
-  description: descriptions[0],
+  description: descriptions[0].replaceAll("*", ""),
   keywords: [
     "Glenn Jimenez",
     "Arnel Glenn Jimenez",
@@ -29,6 +30,9 @@ export const metadata: Metadata = {
     "Next.js Developer",
     "Philippines",
   ],
+  alternates: {
+    canonical: "https://gisketch.com",
+  },
   authors: [{ name: "Glenn Jimenez", url: "https://gisketch.com" }],
   creator: "Glenn Jimenez",
   openGraph: {
@@ -94,7 +98,10 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <CommandMenu />
-          <main className="w-full max-w-[1024px] mx-auto px-4">{children}</main>
+          <main className="w-full max-w-[1024px] mx-auto px-4">
+            {children}
+            <Footer />
+          </main>
         </Providers>
       </body>
     </html>
