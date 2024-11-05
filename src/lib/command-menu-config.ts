@@ -3,9 +3,6 @@ import {
   FolderIcon,
   UserIcon,
   TerminalIcon,
-  GithubIcon,
-  LinkedinIcon,
-  TwitterIcon,
 } from "lucide-react";
 
 export type CommandGroup = {
@@ -41,40 +38,16 @@ export const COMMAND_MENU_ITEMS: CommandGroup[] = [
         href: "/projects",
       },
       {
-        id: "about",
-        children: "About",
+        id: "resume",
+        children: "Resume",
         icon: UserIcon,
-        href: "/about",
+        href: "/resume",
       },
       {
         id: "tools",
         children: "Tools",
         icon: TerminalIcon,
         href: "/tools",
-      },
-    ],
-  },
-  {
-    heading: "Social",
-    id: "social",
-    items: [
-      {
-        id: "github",
-        children: "GitHub",
-        icon: GithubIcon,
-        href: "https://github.com/yourusername",
-      },
-      {
-        id: "linkedin",
-        children: "LinkedIn",
-        icon: LinkedinIcon,
-        href: "https://linkedin.com/in/yourusername",
-      },
-      {
-        id: "twitter",
-        children: "Twitter",
-        icon: TwitterIcon,
-        href: "https://twitter.com/yourusername",
       },
     ],
   },

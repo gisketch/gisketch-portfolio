@@ -4,54 +4,53 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Providers } from "./providers";
 import { CommandMenu } from "@/components/command-palette";
+import { about } from "@/lib/data";
+import JsonLd from "@/components/JsonLd";
+
+const { descriptions } = about();
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gisketch.com"),
   title: {
-    default: "gisketch",
-    template: "%s | gisketch",
+    default: "Glenn Jimenez | Full-Stack Developer (gisketch)",
+    template: "%s | Glenn Jimenez (gisketch)",
   },
-  description:
-    "Full-stack developer with years of experience specializing in Web Development. Creating stunning websites, automation tools, and games.",
+  description: descriptions[0],
   keywords: [
     "Glenn Jimenez",
     "Arnel Glenn Jimenez",
     "gisketch",
     "Web Developer",
-    "Game Developer",
-    "Full Stack Developer",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Unity",
-    "C#",
+    "Full-Stack Developer",
+    "Software Engineer",
+    "Frontend Developer",
+    "TypeScript Developer",
+    "React Developer",
+    "Next.js Developer",
     "Philippines",
   ],
-  authors: [
-    { name: "Arnel Glenn Jimenez", url: "https://github.com/gisketch" },
-  ],
-  creator: "Arnel Glenn Jimenez",
+  authors: [{ name: "Glenn Jimenez", url: "https://gisketch.com" }],
+  creator: "Glenn Jimenez",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://gisketch.com",
-    title: "gisketch",
-    description:
-      "Full-stack developer with years of experience specializing in Web Development. Creating stunning websites, automation tools, and games.",
-    siteName: "gisketch",
+    title: "Glenn Jimenez | Full-Stack Developer (gisketch)",
+    description: descriptions[0],
+    siteName: "Glenn Jimenez (gisketch)",
     images: [
       {
         url: "/thumb.webp",
         width: 1200,
         height: 630,
-        alt: "gisketch thumbnail",
+        alt: "Glenn Jimenez - Full-Stack Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "gisketch",
-    description:
-      "Full-stack developer with years of experience specializing in Web Development. Creating stunning websites, automation tools, and games.",
+    title: "Glenn Jimenez | Full-Stack Developer (gisketch)",
+    description: descriptions[0],
     creator: "@gisketch",
     images: ["/thumb.webp"],
   },
@@ -89,6 +88,7 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <JsonLd />
       </head>
       <body className={`${publicSans.className} antialiased overflow-x-hidden`}>
         <Providers>
