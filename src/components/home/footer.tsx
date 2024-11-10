@@ -6,7 +6,7 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-transparent py-4">
-      <div className="container flex flex-col gap-4">
+      <div className="container flex flex-col gap-4 w-full">
         {/* Social Links */}
         <div className="flex items-center justify-center gap-4">
           {socialMedia.map((social) => (

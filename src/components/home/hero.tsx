@@ -58,7 +58,7 @@ export default function Hero() {
         <div className="text-h3 leading-5 sm:text-h1 md:text-[2.75rem] font-extrabold lg:text-hero mb-4 text-foreground">
           <div className="flex flex-row select-none">
             <div className="flex flex-col flex-1">
-              <span className="whitespace-nowrap">
+              <h1 className="whitespace-nowrap flex">
                 I&apos;m{" "}
                 <span className="text-terminal-oni-violet dark:text-terminal-ronin-yellow">
                   Glenn Jimenez
@@ -67,14 +67,14 @@ export default function Hero() {
                 <span
                   className={cn(
                     gisketchFont.className,
-                    "ml-2 font-light",
+                    "ml-2",
                     "text-terminal-oni-violet bg-gradient-to-tr from-terminal-sakura-pink to-terminal-spring-green dark:text-transparent bg-clip-text",
                     "px-8 mx-[-1.5rem]"
                   )}
                 >
                   gisketch
                 </span>
-              </span>
+              </h1>
               <span className="whitespace-nowrap">
                 a
                 <FlipWords

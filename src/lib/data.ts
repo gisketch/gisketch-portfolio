@@ -195,7 +195,7 @@ export const projects = [
 ];
 
 function getLearningsText() {
-  const learning = ["NextJS"];
+  const learning = ["NextJS", "Colemak-DH"];
 
   if (learning.length === 0) return "";
   if (learning.length === 1) return learning[0];
@@ -438,7 +438,45 @@ const education = [
   },
 ];
 
-export const resumeData = { achievements, experiences, education };
+const intro = `I'm a passionate self-taught developer with a strong focus on **TypeScript** and modern frontend development, using tools like **React**, **Next.js**, and **TailwindCSS**. While frontend is my forte, I'm comfortable working across the full stack - I've built backend services with **Express.js** and have experience with **C#** and **Kotlin**. Being an artist at heart, I have a keen eye for design and love creating beautiful, intuitive user experiences. I'm always eager to expand my skillset and tackle new challenges, whether that's learning new technologies or solving complex problems.`;
+
+const capabilities = {
+  language: ["Tagalog - Native", "English - C1"],
+  programmingLanguages: [
+    "TypeScript",
+    "JavaScript",
+    "C#",
+    "Kotlin",
+    "HTML",
+    "CSS",
+    "Markdown",
+  ],
+  frameworks: [
+    "React",
+    "Next.js",
+    "TailwindCSS",
+    "Node.js",
+    "Framer Motion",
+    "Express.js",
+    "Unity",
+  ],
+  services: ["GitHub", "Vercel", "Netlify", "AWS"],
+  tools: ["Neovim", "Git", "Figma", "Photoshop"],
+};
+
+const interests = [
+  `Beyond coding, I'm a **digital artist** at heart who's been **drawing since childhood**. My journey with computers started incredibly early - I was just **3 years old** when I first laid hands on a keyboard, sparking a lifelong passion for technology. I love bringing ideas to life through **animation** and have a deep appreciation for **game design**, especially puzzle-adventure games. **The Legend of Zelda** series holds a special place in my heart as my all-time favorite!`,
+  `I'm also a bit of a keyboard enthusiast - I can type efficiently in both **QWERTY** and **Colemak-DH** layouts. When I'm not coding or drawing, you'll find me strumming my **guitar** or playing simple tunes on the **keyboard**. I love how these creative outlets - whether it's coding, art, or music - all flow together in their own unique way!`,
+];
+
+export const resumeData = {
+  achievements,
+  experiences,
+  education,
+  intro,
+  capabilities,
+  interests,
+};
 
 export const socialMedia = [
   {

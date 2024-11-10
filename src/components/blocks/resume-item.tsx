@@ -8,7 +8,13 @@ const publicSans = Public_Sans({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-export default function ResumeItem({ data }: { data: any }) {
+export default function ResumeItem({
+  data,
+  isInResume = false,
+}: {
+  data: any;
+  isInResume?: boolean;
+}) {
   const {
     title,
     month,
@@ -51,13 +57,25 @@ export default function ResumeItem({ data }: { data: any }) {
                 className="h-full"
               />
             )}
-            {Icon && <Icon className="md:text-terminal-fg" />}
+            {Icon && (
+              <Icon
+                className={cn(
+                  "md:text-terminal-fg",
+                  isInResume && "text-foreground"
+                )}
+              />
+            )}
           </div>
           <div className="bg-border md:bg-terminal-fg/10 w-[1px] flex-grow" />
         </div>
         <div className="flex flex-col">
           {/* Title */}
-          <div className="flex flex-wrap gap-x-2 text-foreground md:text-terminal-fg">
+          <div
+            className={cn(
+              "flex flex-wrap gap-x-2 text-foreground md:text-terminal-fg",
+              isInResume && "md:text-foreground"
+            )}
+          >
             <h3 className="font-bold">{title}</h3>{" "}
             <span className="font-light opacity-80">{date}</span>{" "}
             <span className="font-extralight opacity-60">{duration}</span>
@@ -78,7 +96,12 @@ export default function ResumeItem({ data }: { data: any }) {
             </div>
           )}
           {/* Description */}
-          <p className="flex flex-col gap-1 mt-2 text-foreground/70 dark:text-foreground/50 md:text-terminal-fg/70 font-light">
+          <p
+            className={cn(
+              "flex flex-col gap-1 mt-2 text-foreground/70 dark:text-foreground/50 md:text-terminal-fg/70 font-light",
+              isInResume && "md:text-foreground/70"
+            )}
+          >
             {descriptions.map((desc, index) => (
               <span className="text-small tracking-wide" key={"desc-" + index}>
                 - {desc}

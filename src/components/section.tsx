@@ -55,14 +55,14 @@ const Section = ({
       )}
       {title && (
         <BlurInOnView>
-          <h1
+          <h2
             className={cn(
               "text-h2 font-extrabold md:text-h1-desktop w-full text-center md:mb-4",
               titleClassName
             )}
           >
             {title}
-          </h1>
+          </h2>
         </BlurInOnView>
       )}
       {blurInView ? (

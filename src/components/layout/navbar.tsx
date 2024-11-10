@@ -51,6 +51,7 @@ export function Navbar() {
       <motion.header
         className="fixed bottom-8 left-1/2 z-50 -translate-x-1/2 hidden md:block"
         animate={{ opacity: isAtBottom ? 0 : 1 }}
+        style={{ pointerEvents: isAtBottom ? "none" : "auto" }}
         transition={{ duration: 0.3 }}
       >
         <TooltipProvider>

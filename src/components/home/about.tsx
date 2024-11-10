@@ -2,6 +2,7 @@
 
 import {
   Code,
+  FileIcon,
   Link,
   MapPin,
   MessageCircleIcon,
@@ -18,8 +19,11 @@ import { NeovimOriginalWordmark, TypescriptOriginal } from "devicons-react";
 
 import dynamic from "next/dynamic";
 import { FollowerPointerCard } from "../ui/following-pointer";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 export default function About() {
+  const router = useRouter();
   const [currentFunFact, setCurrentFunFact] = useState(getRandomFunFact(""));
 
   return (
@@ -74,6 +78,13 @@ export default function About() {
           <FunFact text={currentFunFact} />
         </BentoGridItem>
       </BentoGrid>
+      <Button
+        variant="outline"
+        className="mt-4 md:mt-12"
+        onClick={() => router.push("/resume")}
+      >
+        See my Resume <FileIcon />
+      </Button>
     </Section>
   );
 }

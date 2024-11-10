@@ -27,7 +27,8 @@ const config: Config = {
   theme: {
     extend: {
       boxShadow: {
-        input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
+        input:
+          "`0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`",
       },
       fontSize: {
         hero: [
@@ -178,6 +179,8 @@ const config: Config = {
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
         rainbow: "rainbow var(--speed, 2s) infinite linear",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
       keyframes: {
         scroll: {
@@ -244,6 +247,22 @@ const config: Config = {
           },
           "100%": {
             "background-position": "200%",
+          },
+        },
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
           },
         },
       },
