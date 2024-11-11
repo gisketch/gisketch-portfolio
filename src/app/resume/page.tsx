@@ -20,6 +20,7 @@ export default function ResumePage() {
     "item-4",
     "item-5",
     "item-6",
+    "item-7",
   ];
   const { intro, experiences, achievements, education, interests } = resumeData;
 

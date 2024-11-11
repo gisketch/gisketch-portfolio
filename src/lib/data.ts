@@ -194,18 +194,18 @@ export const projects = [
   },
 ];
 
-function getLearningsText() {
+function getLearningsText(isMarkdown = false) {
   const learning = ["NextJS", "Colemak-DH"];
 
   if (learning.length === 0) return "";
-  if (learning.length === 1) return learning[0];
-  if (learning.length === 2) return `${learning[0]} and ${learning[1]}`;
+  if (learning.length === 1) return isMarkdown ? `**${learning[0]}**` : learning[0];
+  if (learning.length === 2) return isMarkdown ? `**${learning[0]}** and **${learning[1]}**` : `${learning[0]} and ${learning[1]}`;
 
   return learning.reduce((text, item, index) => {
     if (index === learning.length - 1) {
-      return `${text}, and ${item}`;
+      return isMarkdown ? `${text}, and **${item}**` : `${text}, and ${item}`;
     }
-    return index === 0 ? item : `${text}, ${item}`;
+    return index === 0 ? (isMarkdown ? `**${item}**` : item) : (isMarkdown ? `${text}, **${item}**` : `${text}, ${item}`);
   }, "");
 }
 
@@ -225,7 +225,7 @@ export const about = () => {
       )}+** years, with **${calculateExperience(
         2023
       )}+** years professionally. I love creating stunning websites that leave an impression, making life easier through automation, building cool tools, and crafting fun games.`,
-      `Always learning something new; currently exploring ${getLearningsText()}. Code might be my thing, but art and music keep me creative!`,
+      `Always learning something new; currently exploring ${getLearningsText(true)}. Code might be my thing, but art and music keep me creative!`,
     ],
     titles: ["Web developer.", "Game developer."],
     work: ["Software Engineer at Lexagle", "Developer at AoTTG 2"],

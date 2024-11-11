@@ -58,23 +58,23 @@ export default function Hero() {
         <div className="text-h3 leading-5 sm:text-h1 md:text-[2.75rem] font-extrabold lg:text-hero mb-4 text-foreground">
           <div className="flex flex-row select-none">
             <div className="flex flex-col flex-1">
-              <h1 className="whitespace-nowrap flex">
+              <span className="whitespace-nowrap">
                 I&apos;m{" "}
                 <span className="text-terminal-oni-violet dark:text-terminal-ronin-yellow">
                   Glenn Jimenez
                 </span>
-                {", aka "}
+                <span>, aka{" "}</span>
                 <span
                   className={cn(
                     gisketchFont.className,
-                    "ml-2",
-                    "text-terminal-oni-violet bg-gradient-to-tr from-terminal-sakura-pink to-terminal-spring-green dark:text-transparent bg-clip-text",
+                    "ml-2 font-light",
+                    "text-terminal-oni-violet dark:text-terminal-ronin-yellow",
                     "px-8 mx-[-1.5rem]"
                   )}
                 >
                   gisketch
                 </span>
-              </h1>
+              </span>
               <span className="whitespace-nowrap">
                 a
                 <FlipWords
@@ -106,7 +106,17 @@ export default function Hero() {
             >
               {descriptions[0]}
             </Markdown>
-            <span>{descriptions[1]}</span>
+            <Markdown
+              components={{
+                strong: ({ ...props }) => (
+                  <strong className="font-bold text-terminal-oni-violet">
+                    {props.children}
+                  </strong>
+                ),
+              }}
+            >
+              {descriptions[1]}
+            </Markdown>
           </div>
           <div className="flex gap-2 text-small md:text-small-desktop font-extralight mt-2 md:mt-4">
             {hobbies.map((hobby, index) => (
@@ -128,14 +138,16 @@ export default function Hero() {
                 Explore Projects
               </RainbowButton>
             </Link>
-            <Button
-              variant="outline"
-              size="lg"
-              className="h-11 bg-background border border-border text-foreground hover:bg-foreground/20 px-6"
-            >
-              <FileTextIcon className="w-4 h-4 mr-1" />
-              Résumé
-            </Button>
+            <Link href="/resume">
+              <Button
+                variant="outline"
+                size="lg"
+                className="h-11 bg-background border border-border text-foreground hover:bg-foreground/20 px-6"
+              >
+                <FileTextIcon className="w-4 h-4 mr-1" />
+                Résumé
+              </Button>
+            </Link>
           </div>
         </div>
         <div className="absolute top-[14rem] right-[-4rem] hidden md:block">
