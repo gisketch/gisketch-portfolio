@@ -7,12 +7,13 @@ import { Button } from "../ui/button";
 import { Folder } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const cards = (type: "game" | "web") =>
+const cards = (row: number) =>
   projects
-    .filter((project) => project.type === type)
+    .filter((project) => project.row === row)
     .map((project) => ({
       title: project.name,
       subtitle: project.subheading,
+      row: project.row,
       type: project.type as "game" | "web",
       source: project.github || null,
       technologies: project.technologies.map((tech: any) => {
@@ -47,8 +48,8 @@ export default function Projects() {
       blurInView={false}
     >
       <div className="flex flex-col gap-4 w-full">
-        <ExpandableCardGrid cards={cards("web")} />
-        <ExpandableCardGrid cards={cards("game")} />
+        <ExpandableCardGrid cards={cards(0)} />
+        <ExpandableCardGrid cards={cards(1)} />
       </div>
       <Button
         variant="outline"

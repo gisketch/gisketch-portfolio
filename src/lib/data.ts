@@ -14,6 +14,7 @@ import {
   FigmaOriginal,
   PhotoshopOriginal,
   NeovimOriginal,
+  KotlinOriginal,
 } from "devicons-react";
 import {
   Code,
@@ -62,6 +63,12 @@ export const technologies = {
       icon: PostgresqlOriginal,
       shortname: "PSQL",
       yearStarted: 2021,
+    },
+    kotlin: {
+      name: "Kotlin",
+      icon: KotlinOriginal,
+      shortname: "Kotlin",
+      yearStarted: 2023,
     },
   },
   frameworks: {
@@ -127,6 +134,7 @@ export const technologies = {
 export const projects = [
   {
     name: "AoTTG 2",
+    row: 1,
     type: "game",
     img: "/projects/aottggame.webp",
     subheading: "Attack on Titan Community Fan Game",
@@ -144,25 +152,24 @@ export const projects = [
     yearStarted: 2020,
   },
   {
-    name: "AoTTG 2 Website",
-    type: "web",
-    img: "/projects/aottgweb.webp",
-    subheading: "Official Website of AoTTG 2",
+    name: "Cobblemon",
+    type: "game",
+    row: 0,
+    img: "/projects/cobblemon.webp",
+    subheading: "Pokémon Mod for Minecraft",
     description:
-      "Designed and developed the official website for Attack on Titan Tribute Game 2, serving as the main hub for the game's community. The website maintains the game's visual identity while providing an intuitive user experience for both new and existing players.",
+      "I contribute to Cobblemon, a popular Minecraft mod with millions of downloads. Working on this project has pushed me into areas I wouldn't normally explore—I've built custom Pokémon riding behavior systems in Kotlin and gotten hands-on with the intricacies of Minecraft's modding ecosystem. Beyond the code, it's been eye-opening to see how game design decisions play out with a massive player base, and collaborating with the open-source community has taught me a lot about maintaining code at scale.",
     technologies: [
-      technologies.languages.typescript,
-      technologies.frameworks.react,
-      technologies.frameworks.tailwindcss,
-      technologies.languages.html,
-      technologies.languages.css,
+      technologies.languages.kotlin,
     ],
-    github: "https://github.com/AoTTG-2",
-    liveDemo: "https://aottg2.com",
-    yearStarted: 2024,
+    github: "https://gitlab.com/cable-mc/cobblemon",
+    liveDemo: "https://cobblemon.com",
+    ctaLabel: "Download Mod",
+    yearStarted: 2019,
   },
   {
     name: "Who's That Pokémon?",
+    row: 0,
     type: "web",
     img: "/projects/pokemon.webp",
     subheading: "Interactive Pokémon Guessing Game",
@@ -181,6 +188,7 @@ export const projects = [
 
   {
     name: "COVID: Armageddon",
+    row: 1,
     type: "game",
     img: "/projects/covid.webp",
     subheading: "Award-winning 2D Platformer Game",
@@ -228,7 +236,7 @@ export const about = () => {
       `Always learning something new; currently exploring ${getLearningsText(true)}. Code might be my thing, but art and music keep me creative!`,
     ],
     titles: ["Web developer.", "Game developer."],
-    work: ["Software Engineer at Lexagle", "Developer at AoTTG 2"],
+    work: ["Software Engineer at Netzon", "Developer at AoTTG 2 & Cobblemon"],
     location: "Philippines",
     email: "dev@gisketch.com",
     copyrightYear: currentYear,
@@ -339,6 +347,44 @@ const achievements = [
 
 const experiences = [
   {
+    title: "Netzon Group",
+    subtitle: "Intermediate Software Engineer",
+    location: "Hybrid・Philippines",
+    img: "/resume/netzon.webp",
+    stack: [
+      "TypeScript",
+      "React",
+      "React Native",
+      "C#",
+      ".NET",
+      "Docker",
+      "Kubernetes",
+      "Postgresql",
+    ],
+    descriptions: [
+      "Contributing to global projects building web and mobile applications.",
+      "Working with React, .NET, and modern development workflows in a collaborative, growth-focused environment.",
+    ],
+    month: 11,
+    year: 2025,
+    isPresent: true
+  },
+  {
+    title: "Cobblemon",
+    img: "/resume/cobblemon.webp",
+    subtitle: "Game Developer",
+    location: "Open-source",
+    stack: ["Kotlin", "Modding", "Minecraft Forge/Fabric API"],
+    descriptions: [
+      "Contributing to a widely-used Minecraft mod with millions of downloads.",
+      "Developed custom Pokémon riding behavior systems in Kotlin while learning Minecraft's modding architecture.",
+      "Collaborating with an active open-source community on a large-scale codebase with real-world impact on player experience.",
+    ],
+    month: 5,
+    year: 2025,
+    isPresent: true,
+  },
+  {
     title: "Lexagle",
     subtitle: "Junior Software Engineer",
     location: "Remote・Singapore",
@@ -361,7 +407,8 @@ const experiences = [
     ],
     month: 8,
     year: 2023,
-    isPresent: true,
+    endedMonth: 8,
+    endedYear: 2025,
   },
   {
     title: "AoTTG 2",
@@ -441,7 +488,7 @@ const education = [
 const intro = `I'm a passionate self-taught developer with a strong focus on **TypeScript** and modern frontend development, using tools like **React**, **Next.js**, and **TailwindCSS**. While frontend is my forte, I'm comfortable working across the full stack - I've built backend services with **Express.js** and have experience with **C#** and **Kotlin**. Being an artist at heart, I have a keen eye for design and love creating beautiful, intuitive user experiences. I'm always eager to expand my skillset and tackle new challenges, whether that's learning new technologies or solving complex problems.`;
 
 const capabilities = {
-  language: ["Tagalog - Native", "English - C1"],
+  language: ["Tagalog・Native", "English・C2"],
   programmingLanguages: [
     "TypeScript",
     "JavaScript",
@@ -459,6 +506,7 @@ const capabilities = {
     "Framer Motion",
     "Express.js",
     "Unity",
+    ".NET"
   ],
   services: ["GitHub", "Vercel", "Netlify", "AWS"],
   tools: ["Neovim", "Git", "Figma", "Photoshop"],
@@ -551,7 +599,7 @@ export const testimonials = [
 
 export const getRandomFunFact = (funFact) => {
   let funFacts = [
-    "I was the first senior artist in the AoTTG 2 skinning community.",
+    // "I was the first senior artist in the AoTTG 2 skinning community.",
     "I learned how to use the computer at the age of 3.",
     "I did most of my animations with only a mouse.",
     "I play the keyboard and the guitar.",
