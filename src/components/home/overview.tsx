@@ -32,63 +32,61 @@ export default function Overview() {
             404 not found :{"("}
           </motion.span>
         </div>
-        <Terminal
-          className="absolute"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isTerminalInHero ? 0 : 1 }}
-        >
-          <span className="opacity-80">zsh 3.1.6</span>
-          <span className="opacity-80">
-            Loading personal and system profiles took 24ms.
-          </span>
-          <span className="flex flex-row gap-2">
-            <span className="text-terminal-ronin-yellow dark:text-terminal-carp-yellow">
-              gisketch
+        {!isTerminalInHero && (
+          <Terminal className="absolute">
+            <span className="opacity-80">zsh 3.1.6</span>
+            <span className="opacity-80">
+              Loading personal and system profiles took 24ms.
             </span>
-            <span className="text-terminal-crystal-blue dark:text-terminal-aqua1">
-              ~/devfiles/portfolio
+            <span className="flex flex-row gap-2">
+              <span className="text-terminal-ronin-yellow dark:text-terminal-carp-yellow">
+                gisketch
+              </span>
+              <span className="text-terminal-crystal-blue dark:text-terminal-aqua1">
+                ~/devfiles/portfolio
+              </span>
+              <span className="flex flex-row items-center gap-2 text-terminal-spring-green">
+                <GitBranch size={12} /> main
+              </span>
             </span>
-            <span className="flex flex-row items-center gap-2 text-terminal-spring-green">
-              <GitBranch size={12} /> main
+            <span className="flex flex-row gap-1 items-center">
+              <ChevronRight size={14} />{" "}
+              <TypewriterEffect
+                cursorClassName="md:h-[0.875rem] md:w-[0.5rem] bg-terminal-fg"
+                words={[
+                  {
+                    text: `./${activeTab}.sh`,
+                    className: "text-body font-light",
+                  },
+                ]}
+                key={"type-" + activeTab}
+              />
             </span>
-          </span>
-          <span className="flex flex-row gap-1 items-center">
-            <ChevronRight size={14} />{" "}
-            <TypewriterEffect
-              cursorClassName="md:h-[0.875rem] md:w-[0.5rem] bg-terminal-fg"
-              words={[
-                {
-                  text: `./${activeTab}.sh`,
-                  className: "text-body font-light",
-                },
-              ]}
-              key={"type-" + activeTab}
-            />
-          </span>
-          <Resume activeTab={activeTab} setActiveTab={setActiveTab} />
-          <>
-            <motion.div
-              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
-              transition={{ duration: 1.5 }}
-              className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"
-            />
-            <motion.div
-              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
-              transition={{ duration: 1.5 }}
-              className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"
-            />
-            <motion.div
-              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
-              transition={{ duration: 1.5 }}
-              className="invisible dark:visible absolute bottom-[-0.125rem] left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"
-            />
-            <motion.div
-              animate={{ opacity: !isTerminalInHero ? 1 : 0 }}
-              transition={{ duration: 1.5 }}
-              className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"
-            />
-          </>
-        </Terminal>
+            <Resume activeTab={activeTab} setActiveTab={setActiveTab} />
+            <>
+              <motion.div
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm"
+              />
+              <motion.div
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4"
+              />
+              <motion.div
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="invisible dark:visible absolute bottom-[-0.125rem] left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm"
+              />
+              <motion.div
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="invisible dark:visible absolute bottom-0 left-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4"
+              />
+            </>
+          </Terminal>
+        )}
       </div>
       <Resume
         activeTab={activeTab}

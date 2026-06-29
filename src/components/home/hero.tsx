@@ -10,7 +10,7 @@ import { FlipWords } from "../ui/flip-words";
 import { about } from "@/lib/data";
 import Markdown from "react-markdown";
 import Code from "./hero/code";
-import { cn, useBreakpoint } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 import { RocketIcon, FileTextIcon } from "lucide-react";
 import Link from "next/link";
@@ -31,7 +31,6 @@ const pillStyles = [
 export default function Hero() {
   const sectionRef = useRef(null);
   const { isTerminalInHero, setIsTerminalInHero } = useTerminalStore();
-  const { isMd } = useBreakpoint();
   const { titles, work, descriptions, hobbies } = about();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -39,7 +38,7 @@ export default function Hero() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (isMd) {
+    if (window.matchMedia("(min-width: 768px)").matches) {
       if (latest > 0.5) {
         setIsTerminalInHero(false);
       } else {
