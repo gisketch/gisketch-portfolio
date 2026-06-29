@@ -18,7 +18,7 @@ export default function Overview() {
 
   return (
     <Section
-      className="flex items-center relative"
+      className="flex items-center relative z-20"
       title="What I've Been Up To"
       hasBgGrid
       blurInView={false}
@@ -139,9 +139,9 @@ const Resume = ({ activeTab, setActiveTab, className = "" }) => {
   const { isMd } = useBreakpoint();
 
   return (
-    <div className={cn("flex flex-col w-full", className)}>
+    <div className={cn("flex flex-col w-full min-h-0 flex-1", className)}>
       {/* Tabs */}
-      <div className="flex gap-2 md:gap-1 md:mt-2 mx-auto md:mx-0 justify-center md:justify-start">
+      <div className="flex gap-2 md:gap-1 md:mt-2 mx-auto md:mx-0 justify-center md:justify-start shrink-0">
         {tabs.map((tab) => (
           <Button
             key={tab.value}
@@ -163,7 +163,7 @@ const Resume = ({ activeTab, setActiveTab, className = "" }) => {
       </div>
 
       {/* Content */}
-      <div className="p-2 font-sans mt-4 md:mt-2">
+      <div className="p-2 font-sans mt-4 md:mt-2 min-h-0 flex-1 overflow-y-auto">
         {tabs.find((tab) => tab.value === activeTab)?.content}
       </div>
     </div>

@@ -4,23 +4,29 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Providers } from "./providers";
 import { CommandMenu } from "@/components/command-palette";
-import { about } from "@/lib/data";
 import JsonLd from "@/components/JsonLd";
 import { Footer } from "@/components/home/footer";
 
-const { descriptions } = about();
+const siteUrl = "https://gisketch.com";
+const personName = "Arnel Glenn Jimenez";
+const handle = "gisketch";
+const seoDescription =
+  "Official portfolio of Arnel Glenn Jimenez, also known as Glenn Jimenez, Ghegi Jimenez, and gisketch. Software engineer, full-stack developer, game developer, and digital artist in the Philippines.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gisketch.com"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Glenn Jimenez | Full-Stack Developer (gisketch)",
-    template: "%s | Glenn Jimenez (gisketch)",
+    default: "gisketch | Software Developer",
+    template: `%s | ${handle}`,
   },
-  description: descriptions[0].replaceAll("*", ""),
+  description: seoDescription,
   keywords: [
-    "Glenn Jimenez",
     "Arnel Glenn Jimenez",
+    "Glenn Jimenez",
+    "Ghegi Jimenez",
+    "Ghegi",
     "gisketch",
+    "gisketch portfolio",
     "Web Developer",
     "Full-Stack Developer",
     "Software Engineer",
@@ -31,30 +37,30 @@ export const metadata: Metadata = {
     "Philippines",
   ],
   alternates: {
-    canonical: "https://gisketch.com",
+    canonical: siteUrl,
   },
-  authors: [{ name: "Glenn Jimenez", url: "https://gisketch.com" }],
-  creator: "Glenn Jimenez",
+  authors: [{ name: personName, url: siteUrl }],
+  creator: personName,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://gisketch.com",
-    title: "Glenn Jimenez | Full-Stack Developer (gisketch)",
-    description: descriptions[0].replaceAll("*", ""),
-    siteName: "Glenn Jimenez (gisketch)",
+    url: siteUrl,
+    title: "gisketch | Software Developer",
+    description: seoDescription,
+    siteName: "gisketch - Arnel Glenn Jimenez",
     images: [
       {
         url: "/thumb.webp",
         width: 1200,
         height: 630,
-        alt: "Glenn Jimenez - Full-Stack Developer",
+        alt: "gisketch - Arnel Glenn Jimenez portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Glenn Jimenez | Full-Stack Developer (gisketch)",
-    description: descriptions[0].replaceAll("*", ""),
+    title: "gisketch | Software Developer",
+    description: seoDescription,
     creator: "@gisketch",
     images: ["/thumb.webp"],
   },

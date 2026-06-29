@@ -347,6 +347,28 @@ const achievements = [
 
 const experiences = [
   {
+    title: "CmdBlock",
+    subtitle: "Founder / Lead Developer",
+    location: "Independent・Philippines",
+    img: "/resume/cmdblock.svg",
+    stack: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "Docker",
+      "AWS",
+      "CI/CD",
+    ],
+    descriptions: [
+      "Founded CmdBlock, an independent developer collective focused on building practical software systems, automation tools, web apps, and self-hosted infrastructure.",
+      "Lead project-based builds across software products, client systems, and internal infrastructure under one shared team identity.",
+    ],
+    month: 1,
+    year: 2026,
+    isPresent: true,
+  },
+  {
     title: "Netzon Group",
     subtitle: "Intermediate Software Engineer",
     location: "Hybrid・Philippines",

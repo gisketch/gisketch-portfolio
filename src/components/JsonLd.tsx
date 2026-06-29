@@ -1,20 +1,26 @@
 import { about } from "@/lib/data";
 
 export default function JsonLd() {
-  const { name, realName, descriptions, work, location } = about();
+  const { work, location, email } = about();
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: realName,
-    alternateName: name,
-    description: descriptions[0],
+    "@id": "https://gisketch.com/#person",
+    name: "Arnel Glenn Jimenez",
+    givenName: "Arnel Glenn",
+    familyName: "Jimenez",
+    alternateName: ["Glenn Jimenez", "Ghegi Jimenez", "Ghegi", "gisketch"],
+    description:
+      "Official portfolio of Arnel Glenn Jimenez, also known as Glenn Jimenez, Ghegi Jimenez, and gisketch.",
     jobTitle: work[0],
+    email,
     address: {
       "@type": "PostalAddress",
       addressCountry: location,
     },
     url: "https://gisketch.com",
+    mainEntityOfPage: "https://gisketch.com",
     sameAs: [
       "https://github.com/gisketch",
       "https://www.linkedin.com/in/ghegijmnz/",

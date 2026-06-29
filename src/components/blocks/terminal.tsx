@@ -18,7 +18,7 @@ const Terminal = ({ className, children, ...motionProps }: TerminalProps) => {
       layout
       layoutId="terminal-layout"
       className={cn(
-        "bg-terminal-bg/50 w-full rounded-xl border-border border h-[520px] flex flex-col backdrop-blur-md shadow-xl z-[5]",
+        "bg-terminal-bg/50 w-full rounded-xl border-border border h-[520px] flex flex-col backdrop-blur-md shadow-xl z-[5] overflow-hidden",
         className
       )}
       {...motionProps}
@@ -31,7 +31,7 @@ const Terminal = ({ className, children, ...motionProps }: TerminalProps) => {
       </div>
       {/* terminal wrapper */}
       <div
-        className={`w-full flex-grow py-2 px-4 text-body text-terminal-fg ${firaCode.className} flex flex-col gap-[0.125rem] overflow-y-scroll`}
+        className={`w-full flex-1 min-h-0 py-2 px-4 text-body text-terminal-fg ${firaCode.className} flex flex-col gap-[0.125rem] overflow-hidden`}
       >
         {/*  content */}
         {children}
