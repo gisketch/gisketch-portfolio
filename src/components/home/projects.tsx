@@ -43,7 +43,7 @@ export default function Projects() {
   const router = useRouter();
   return (
     <Section
-      className="flex items-center"
+      className="flex items-center pt-12 md:pt-16"
       title="Stuff I'm Proud Of"
       blurInView={false}
     >
