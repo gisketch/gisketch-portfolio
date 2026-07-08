@@ -202,21 +202,6 @@ export const projects = [
   },
 ];
 
-function getLearningsText(isMarkdown = false) {
-  const learning = ["NextJS", "Colemak-DH"];
-
-  if (learning.length === 0) return "";
-  if (learning.length === 1) return isMarkdown ? `**${learning[0]}**` : learning[0];
-  if (learning.length === 2) return isMarkdown ? `**${learning[0]}** and **${learning[1]}**` : `${learning[0]} and ${learning[1]}`;
-
-  return learning.reduce((text, item, index) => {
-    if (index === learning.length - 1) {
-      return isMarkdown ? `${text}, and **${item}**` : `${text}, and ${item}`;
-    }
-    return index === 0 ? (isMarkdown ? `**${item}**` : item) : (isMarkdown ? `${text}, **${item}**` : `${text}, ${item}`);
-  }, "");
-}
-
 export const about = () => {
   const currentYear = new Date().getFullYear();
   const calculateExperience = (yearStarted: number) =>
@@ -228,12 +213,12 @@ export const about = () => {
     nickname: "Ghegi",
     hobbies: ["Artist", "Guitarist", "Gamer", "Zelda Fan"],
     descriptions: [
-      `Been coding for **${calculateExperience(
+      `I'm a software developer with **${calculateExperience(
         2019
-      )}+** years, with **${calculateExperience(
+      )}+** years of experience, including **${calculateExperience(
         2023
-      )}+** years professionally. I love creating stunning websites that leave an impression, making life easier through automation, building cool tools, and crafting fun games.`,
-      `Always learning something new; currently exploring ${getLearningsText(true)}. Code might be my thing, but art and music keep me creative!`,
+      )}+** years professionally, building infrastructure-heavy systems for real-world operations. I lead projects across product, backend, frontend, architecture, and deployment, with a growing focus on cybersecurity, reliability, and resilient system design.`,
+      `I also help build games I care about: leading UI design, online systems, account infrastructure, workshop features, and gameplay development for [AoTTG 2](https://aottg2.com), while contributing to [Cobblemon](https://cobblemon.com) as part of the dev team.`,
     ],
     titles: ["Web developer.", "Game developer."],
     work: ["Software Engineer at Netzon", "Developer at AoTTG 2 & Cobblemon"],
@@ -241,7 +226,7 @@ export const about = () => {
     email: "dev@gisketch.com",
     copyrightYear: currentYear,
     yearsOfExperience: calculateExperience(2019),
-    preferredLanguage: technologies.languages.typescript,
+    preferredLanguage: technologies.languages.csharp,
     preferredIDE: technologies.tools.neovim,
     interests: ["Game Development", "Web Development", "Digital Art", "Music"],
     education: {
@@ -507,7 +492,7 @@ const education = [
   },
 ];
 
-const intro = `I'm a passionate self-taught developer with a strong focus on **TypeScript** and modern frontend development, using tools like **React**, **Next.js**, and **TailwindCSS**. While frontend is my forte, I'm comfortable working across the full stack - I've built backend services with **Express.js** and have experience with **C#** and **Kotlin**. Being an artist at heart, I have a keen eye for design and love creating beautiful, intuitive user experiences. I'm always eager to expand my skillset and tackle new challenges, whether that's learning new technologies or solving complex problems.`;
+const intro = `I'm a self-taught software developer with **${about().yearsOfExperience}+** years of experience building infrastructure-heavy systems for real-world operations. I lead projects across product, backend, frontend, architecture, and deployment, with a growing focus on cybersecurity, reliability, and resilient system design. I also help build games I care about: leading UI design, online systems, account infrastructure, workshop features, and gameplay development for **AoTTG 2**, while contributing to **Cobblemon** as part of the dev team.`;
 
 const capabilities = {
   language: ["Tagalog・Native", "English・C2"],
@@ -536,7 +521,7 @@ const capabilities = {
 
 const interests = [
   `Beyond coding, I'm a **digital artist** at heart who's been **drawing since childhood**. My journey with computers started incredibly early - I was just **3 years old** when I first laid hands on a keyboard, sparking a lifelong passion for technology. I love bringing ideas to life through **animation** and have a deep appreciation for **game design**, especially puzzle-adventure games. **The Legend of Zelda** series holds a special place in my heart as my all-time favorite!`,
-  `I'm also a bit of a keyboard enthusiast - I can type efficiently in both **QWERTY** and **Colemak-DH** layouts. When I'm not coding or drawing, you'll find me strumming my **guitar** or playing simple tunes on the **keyboard**. I love how these creative outlets - whether it's coding, art, or music - all flow together in their own unique way!`,
+  `I'm also digging deeper into **cybersecurity**, **infrastructure**, and resilient systems. When I'm not coding or drawing, you'll find me strumming my **guitar** or playing simple tunes on the **keyboard**. I love how these creative outlets - whether it's coding, art, or music - all flow together in their own unique way!`,
 ];
 
 export const resumeData = {

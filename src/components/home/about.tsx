@@ -15,7 +15,7 @@ import Globe from "./about/globe";
 import { getRandomFunFact, socialMedia, technologies } from "@/lib/data";
 import { useEffect, useRef, useState } from "react";
 import { motion, useAnimationControls } from "framer-motion";
-import { NeovimOriginalWordmark, TypescriptOriginal } from "devicons-react";
+import { CsharpOriginal, NeovimOriginalWordmark } from "devicons-react";
 
 import dynamic from "next/dynamic";
 import { FollowerPointerCard } from "../ui/following-pointer";
@@ -154,8 +154,8 @@ const FavoriteTool = () => {
 const FavoriteLanguage = () => {
   return (
     <div className="flex gap-2 items-center justify-center h-full">
-      <TypescriptOriginal size={28} />
-      <span className="font-bold text-foreground/70">TypeScript</span>
+      <CsharpOriginal size={28} />
+      <span className="font-bold text-foreground/70">C#</span>
     </div>
   );
 };

@@ -28,6 +28,41 @@ const pillStyles = [
   "border border-terminal-sakura-pink bg-terminal-sakura-pink/30 text-terminal-sakura-pink",
 ];
 
+const linkIcons: Record<string, string> = {
+  "https://aottg2.com": "/resume/aottg2.webp",
+  "https://cobblemon.com": "/resume/cobblemon.webp",
+};
+
+const MarkdownLink = ({ href, children, ...props }) => {
+  const icon = href ? linkIcons[href] : undefined;
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-baseline gap-1 font-semibold text-terminal-oni-violet transition-colors hover:text-terminal-sakura-pink"
+      {...props}
+    >
+      {icon && (
+        <span
+          aria-hidden="true"
+          className="relative top-[0.18em] inline-block h-[1em] w-[1em] shrink-0 rounded-sm bg-cover bg-center"
+          style={{ backgroundImage: `url(${icon})` }}
+        />
+      )}
+      {children}
+    </a>
+  );
+};
+
+const markdownComponents = (strongClassName: string) => ({
+  strong: ({ ...props }) => (
+    <strong className={strongClassName}>{props.children}</strong>
+  ),
+  a: MarkdownLink,
+});
+
 export default function Hero() {
   const sectionRef = useRef(null);
   const { isTerminalInHero, setIsTerminalInHero } = useTerminalStore();
@@ -95,24 +130,16 @@ export default function Hero() {
           </p>
           <div className="mt-2 text-foreground/80 font-light text-body md:text-body-desktop flex flex-col gap-2 md:pr-[20rem] z-10">
             <Markdown
-              components={{
-                strong: ({ ...props }) => (
-                  <strong className="font-bold text-terminal-spring-green">
-                    {props.children}
-                  </strong>
-                ),
-              }}
+              components={markdownComponents(
+                "font-bold text-terminal-spring-green"
+              )}
             >
               {descriptions[0]}
             </Markdown>
             <Markdown
-              components={{
-                strong: ({ ...props }) => (
-                  <strong className="font-bold text-terminal-oni-violet">
-                    {props.children}
-                  </strong>
-                ),
-              }}
+              components={markdownComponents(
+                "font-bold text-terminal-oni-violet"
+              )}
             >
               {descriptions[1]}
             </Markdown>
