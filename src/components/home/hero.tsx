@@ -29,6 +29,7 @@ const pillStyles = [
 ];
 
 const linkIcons: Record<string, string> = {
+  "https://cmdblock.tech": "/resume/cmdblock.svg",
   "https://aottg2.com": "/resume/aottg2.webp",
   "https://cobblemon.com": "/resume/cobblemon.webp",
 };
@@ -61,6 +62,11 @@ const markdownComponents = (strongClassName: string) => ({
     <strong className={strongClassName}>{props.children}</strong>
   ),
   a: MarkdownLink,
+});
+
+const inlineMarkdownComponents = (strongClassName: string) => ({
+  ...markdownComponents(strongClassName),
+  p: ({ ...props }) => <>{props.children}</>,
 });
 
 export default function Hero() {
@@ -123,7 +129,13 @@ export default function Hero() {
             {" "}
             {work.map((workText, index) => (
               <span key={`work-${index}`}>
-                {workText}
+                <Markdown
+                  components={inlineMarkdownComponents(
+                    "font-bold text-terminal-spring-green"
+                  )}
+                >
+                  {workText}
+                </Markdown>
                 {index !== work.length - 1 && " ・ "}
               </span>
             ))}

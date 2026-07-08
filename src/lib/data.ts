@@ -221,7 +221,10 @@ export const about = () => {
       `I also help build games I care about: leading UI design, online systems, account infrastructure, workshop features, and gameplay development for [AoTTG 2](https://aottg2.com), while contributing to [Cobblemon](https://cobblemon.com) as part of the dev team.`,
     ],
     titles: ["Web developer.", "Game developer."],
-    work: ["Software Engineer at Netzon", "Developer at AoTTG 2 & Cobblemon"],
+    work: [
+      "Co-founder of [CmdBlock](https://cmdblock.tech)",
+      "Developer at AoTTG 2 & Cobblemon",
+    ],
     location: "Philippines",
     email: "dev@gisketch.com",
     copyrightYear: currentYear,
